@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AZENKIVO" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/emergency_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/safety_blue</item>
+        <item name="android:statusBarColor">@color/emergency_red_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Theme.AZENKIVO" parent="Base.Theme.AZENKIVO" />
+</resources>

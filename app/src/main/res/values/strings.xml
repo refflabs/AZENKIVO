@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">AZENKIVO</string>
+    <string name="app_tagline">Sistem Keselamatan &amp; Tanggap Darurat</string>
+    <string name="login_title">Masuk ke AZENKIVO</string>
+    <string name="login_subtitle">Akses Cepat Panduan &amp; Bantuan Darurat</string>
+    <string name="hint_username">Nama Pengguna / Email</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="btn_login">MASUK SEKARANG</string>
+    <string name="err_empty_fields">Silakan isi username dan password!</string>
+    
+    <!-- MainActivity -->
+    <string name="welcome_user">Halo, Siaga Darurat!</string>
+    <string name="main_header">Pusat Tanggap Darurat</string>
+    <string name="main_desc">Akses cepat nomor darurat nasional dan panduan evakuasi bencana.</string>
+    <string name="btn_detail_guide">Lihat Panduan &amp; SOP Darurat</string>
+    <string name="btn_logout">Keluar (Log Out)</string>
+    
+    <!-- DetailActivity -->
+    <string name="detail_title">Detail SOP Tanggap Darurat</string>
+    <string name="detail_project_title">AZENKIVO - Tanggap &amp; Selamat</string>
+    <string name="detail_desc">AZENKIVO adalah platform respon cepat tanggap darurat yang mengintegrasikan panduan pertolongan pertama (P3K), langkah evakuasi saat bencana gempa dan kebakaran, serta integrasi nomor darurat nasional Indonesia.</string>
+    <string name="btn_back">Kembali ke Beranda</string>
+    
+    <!-- AlertDialog Logout -->
+    <string name="dialog_logout_title">Konfirmasi Log Out</string>
+    <string name="dialog_logout_message">Apakah Anda yakin ingin keluar dari aplikasi AZENKIVO?</string>
+    <string name="dialog_logout_yes">Ya, Keluar</string>
+    <string name="dialog_logout_no">Tidak</string>
+</resources>
