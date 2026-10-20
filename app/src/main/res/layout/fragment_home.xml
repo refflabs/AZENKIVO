@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    tools:context=".Home.HomeFragment">
+
+    <!-- Toolbar merah berisi sapaan (header desain). Ikon lonceng berasal dari Option Menu -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_header_red"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingTop="10dp"
+        android:paddingBottom="22dp"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:contentInsetStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.Material3.Light">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Ikon perisai dalam lingkaran -->
+            <FrameLayout
+                style="@style/Azenkivo.IconCircle"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:backgroundTint="@color/emergency_red_dark">
+
+                <ImageView
+                    style="@style/Azenkivo.IconInCircle"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_shield" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvGreeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:includeFontPadding="false"
+                    android:text="Halo, Tim Siaga!"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Status: Siaga Bencana 24/7"
+                    android:textColor="@color/emergency_red_light"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- Banner peringatan gempa (klik -> Info BMKG) -->
+            <LinearLayout
+                android:id="@+id/bannerGempa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_banner_warning"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <FrameLayout
+                    style="@style/Azenkivo.IconCircle"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:backgroundTint="@color/safety_orange">
+
+                    <ImageView
+                        style="@style/Azenkivo.IconInCircle"
+                        android:src="@drawable/ic_warning_mark" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Azenkivo.Text.WarningTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peringatan Gempa M 5.2" />
+
+                    <TextView
+                        style="@style/Azenkivo.Text.WarningBody"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terdeteksi 12 km barat laut • Tetap tenang" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tombol SOS (ripple saat ditekan) -->
+            <TextView
+                android:id="@+id/btnSos"
+                android:layout_width="196dp"
+                android:layout_height="196dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_sos_button"
+                android:clickable="true"
+                android:contentDescription="Tombol SOS, tekan dan tahan untuk mengirim sinyal darurat"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_bold"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.04"
+                android:text="SOS"
+                android:textColor="@color/white"
+                android:textSize="44sp" />
+
+            <TextView
+                style="@style/Azenkivo.Text.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:text="TEKAN &amp; TAHAN UNTUK DARURAT" />
+
+            <!-- Judul bagian hotline -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Azenkivo.Text.SectionTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Panggilan Cepat Terpadu" />
+
+                <TextView
+                    android:id="@+id/tvSemuaHotline"
+                    style="@style/Azenkivo.Text.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-8dp"
+                    android:text="Semua (4)" />
+            </LinearLayout>
+
+            <!-- Baris 1: 112 dan 119 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card112"
+                    style="@style/Azenkivo.Card.Clickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        style="@style/Azenkivo.CardContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            style="@style/Azenkivo.IconCircle"
+                            android:backgroundTint="@color/emergency_red_light">
+
+                            <ImageView
+                                style="@style/Azenkivo.IconInCircle"
+                                android:src="@drawable/ic_plus"
+                                app:tint="@color/emergency_red" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Text.HotlineNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="112" />
+
+                            <TextView
+                                style="@style/Azenkivo.Text.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Panggilan Umum" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card119"
+                    style="@style/Azenkivo.Card.Clickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        style="@style/Azenkivo.CardContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            style="@style/Azenkivo.IconCircle"
+                            android:backgroundTint="@color/safety_blue_light">
+
+                            <ImageView
+                                style="@style/Azenkivo.IconInCircle"
+                                android:src="@drawable/ic_plus"
+                                app:tint="@color/safety_blue" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Text.HotlineNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="119" />
+
+                            <TextView
+                                style="@style/Azenkivo.Text.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ambulans Medis" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Baris 2: 113 dan 115 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card113"
+                    style="@style/Azenkivo.Card.Clickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        style="@style/Azenkivo.CardContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            style="@style/Azenkivo.IconCircle"
+                            android:backgroundTint="@color/safety_orange_light">
+
+                            <ImageView
+                                style="@style/Azenkivo.IconInCircle"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_dot"
+                                app:tint="@color/safety_orange" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Text.HotlineNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="113" />
+
+                            <TextView
+                                style="@style/Azenkivo.Text.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Damkar / Rescue" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card115"
+                    style="@style/Azenkivo.Card.Clickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        style="@style/Azenkivo.CardContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            style="@style/Azenkivo.IconCircle"
+                            android:backgroundTint="@color/safety_green_light">
+
+                            <ImageView
+                                style="@style/Azenkivo.IconInCircle"
+                                android:src="@drawable/ic_ring"
+                                app:tint="@color/safety_green" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Text.HotlineNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="115" />
+
+                            <TextView
+                                style="@style/Azenkivo.Text.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basarnas SAR" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Banner SOP P3K (klik "Buka SOP" -> tab Panduan) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBannerSop"
+                style="@style/Azenkivo.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/text_primary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Panduan Mitigasi &amp; SOP P3K"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Penanganan henti napas, luka bakar &amp; gempa"
+                            android:textColor="@color/text_hint"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBukaSop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_pill_red"
+                        android:fontFamily="@font/poppins_bold"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="Buka SOP"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

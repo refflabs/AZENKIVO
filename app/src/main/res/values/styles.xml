@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Style komponen AZENKIVO dikumpulkan di satu tempat supaya ukuran, font, dan warna
+     konsisten di semua layar. Cukup ubah di sini, semua layout ikut berubah. -->
+<resources>
+
+    <!-- Induk kosong untuk penamaan bertitik (Azenkivo.Card, Azenkivo.Text.Link, dst) -->
+    <style name="Azenkivo" />
+    <style name="Azenkivo.Text" />
+
+    <!-- ===== Kartu putih bergaris tipis (design system) ===== -->
+    <style name="Azenkivo.Card">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!-- Kartu yang bisa diklik: ada efek ripple saat ditekan -->
+    <style name="Azenkivo.Card.Clickable">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- Isi kartu: garis tipis + padding seragam -->
+    <style name="Azenkivo.CardContent">
+        <item name="android:background">@drawable/bg_card_stroke</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- ===== Ikon dalam lingkaran ===== -->
+    <style name="Azenkivo.IconCircle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_circle</item>
+    </style>
+
+    <style name="Azenkivo.IconCircle.Small">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+    </style>
+
+    <!-- Ikon di tengah lingkaran -->
+    <style name="Azenkivo.IconInCircle">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:importantForAccessibility">no</item>
+    </style>
+
+    <!-- ===== Teks ===== -->
+    <!-- Judul bagian, mis. "Panggilan Cepat Terpadu" -->
+    <style name="Azenkivo.Text.SectionTitle">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Nomor hotline besar -->
+    <style name="Azenkivo.Text.HotlineNumber">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Label kecil di bawah nomor -->
+    <style name="Azenkivo.Text.Caption">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Label huruf kapital kecil dengan jarak huruf, mis. "TEKAN & TAHAN ..." -->
+    <style name="Azenkivo.Text.Overline">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <!-- Teks yang bisa diklik (link). minHeight 48dp = area sentuh minimal Android -->
+    <style name="Azenkivo.Text.Link">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/safety_blue</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- Banner peringatan oranye: judul & isi -->
+    <style name="Azenkivo.Text.WarningTitle">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/safety_orange</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Azenkivo.Text.WarningBody">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

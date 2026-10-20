@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tampilan satu baris unit responder (seperti item_message.xml di Modul P7 langkah 4.3) -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_stroke"
+        android:padding="14dp">
+
+        <!-- Foto bulat: ImageView dibungkus CardView dengan radius setengah ukuran -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFoto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/avatarImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/emergency_red_light"
+                android:contentDescription="Foto petugas"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textNamaUnit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Nama Unit"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/textEta"
+            app:layout_constraintStart_toEndOf="@+id/cardFoto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textInstansi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Instansi"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/textNamaUnit"
+            app:layout_constraintStart_toStartOf="@+id/textNamaUnit"
+            app:layout_constraintTop_toBottomOf="@+id/textNamaUnit" />
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Status"
+            android:textColor="@color/safety_green"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@+id/textNamaUnit"
+            app:layout_constraintStart_toStartOf="@+id/textNamaUnit"
+            app:layout_constraintTop_toBottomOf="@+id/textInstansi" />
+
+        <TextView
+            android:id="@+id/textEta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_red_light"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:text="4 menit"
+            android:textColor="@color/emergency_red"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textJarak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="1.4 km"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEta" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

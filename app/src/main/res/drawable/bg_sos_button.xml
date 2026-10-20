@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tombol SOS: lingkaran merah muda di luar, lingkaran merah di dalam dengan cincin putih -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/emergency_red_light" />
+        </shape>
+    </item>
+    <item
+        android:bottom="18dp"
+        android:left="18dp"
+        android:right="18dp"
+        android:top="18dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/emergency_red" />
+            <stroke
+                android:width="5dp"
+                android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

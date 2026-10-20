@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    tools:context=".Tracking.TrackingFragment">
+
+    <!-- Beda dari modul: ThemeOverlay.Material3.Dark.ActionBar (modul: ThemeOverlay.AppCompat.Dark.ActionBar) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/emergency_red"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/emergency_red"
+            app:popupTheme="@style/ThemeOverlay.Material3.Light"
+            app:subtitleTextAppearance="@style/AzenkivoToolbarSubtitle"
+            app:titleTextAppearance="@style/AzenkivoToolbarTitle"
+            app:subtitleTextColor="@color/emergency_red_light"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Status GPS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_stroke"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/safety_green" />
+
+            <TextView
+                android:id="@+id/tvStatusGps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Sinyal GPS Aktif: Presisi 3m"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- ETA & jarak unit terdekat -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_red_light"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:text="ETA: 4 MENIT"
+                android:textColor="@color/emergency_red"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvJarak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Jarak: 1.4 km ke lokasi"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Unit Responder Terdekat"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp" />
+
+        <!-- Daftar unit responder (Custom Adapter) -->
+        <ListView
+            android:id="@+id/listResponder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp" />
+
+        <!-- Tombol aksi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnHubungiAmbulans"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1.6"
+                android:background="@drawable/bg_pill_red"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Hubungi Ambulans"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBatalSos"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_pill_grey"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Batal SOS"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Tetap di posisi aman dan pastikan jalur evakuasi terbuka."
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

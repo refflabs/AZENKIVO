@@ -1,13 +1,80 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AZENKIVO" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+    <!-- Base application theme.
+         1) Light (bukan DayNight): desain AZENKIVO hanya punya mode terang. Dengan DayNight,
+            saat HP dalam dark mode warna teks bawaan jadi terang dan tidak terbaca.
+         2) Font default memakai android:fontFamily. Item "fontFamily" (tanpa android:)
+            DIHAPUS karena AppCompat mengutamakannya di atas android:fontFamily milik
+            tiap TextView, sehingga poppins_bold / poppins_semibold ikut jadi Regular. -->
+    <style name="Base.Theme.AZENKIVO" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/emergency_red</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/safety_blue</item>
         <item name="android:statusBarColor">@color/emergency_red_dark</item>
-        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <!-- Cegah fitur "paksa mode gelap" bawaan HP (realme/Oppo/Xiaomi, dll) membalik
+             warna teks jadi terang di atas kartu putih -->
+        <item name="android:forceDarkAllowed">false</item>
+
+        <!-- Gaya teks untuk layout bawaan simple_list_item_1 / simple_list_item_2 -->
+        <item name="android:textAppearanceListItem">@style/AzenkivoListTitle</item>
+        <item name="android:textAppearanceListItemSmall">@style/AzenkivoListTitle</item>
+        <item name="android:textAppearanceListItemSecondary">@style/AzenkivoListSubtitle</item>
     </style>
 
     <style name="Theme.AZENKIVO" parent="Base.Theme.AZENKIVO" />
+
+    <!-- Theme khusus SplashScreen -->
+    <style name="Theme.AZENKIVO.Splash" parent="Theme.AZENKIVO">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">@color/emergency_red</item>
+        <item name="android:navigationBarColor">@color/emergency_red_dark</item>
+        <!-- Hilangkan lapisan transparan sistem di area navigasi bawah -->
+        <item name="android:enforceNavigationBarContrast">false</item>
+
+        <!-- Splash bawaan sistem Android 12+ (muncul sebelum SplashActivity):
+             latar merah + logo perisai, menggantikan ikon aplikasi (ambulans) -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/emergency_red</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@drawable/splash_icon</item>
+    </style>
+
+    <!-- Material3: "pill" di belakang ikon tab aktif dibuat putih (sama dengan latar),
+         sehingga yang terlihat hanya ikon & label merah seperti di Figma -->
+    <style name="AzenkivoBottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/card_bg</item>
+    </style>
+
+    <!-- Label bottom nav: tebal saat aktif, biasa saat tidak -->
+    <style name="AzenkivoNavLabelActive" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AzenkivoNavLabel" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Judul & subjudul Toolbar: Poppins tebal seperti header di desain -->
+    <style name="AzenkivoToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AzenkivoToolbarSubtitle" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Teks baris ListView bawaan (judul & deskripsi) -->
+    <style name="AzenkivoListTitle" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AzenkivoListSubtitle" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

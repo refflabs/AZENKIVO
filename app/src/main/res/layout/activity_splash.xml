@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash_gradient"
+    tools:context=".SplashActivity">
+
+    <!-- Logo perisai AZENKIVO di tengah -->
+    <ImageView
+        android:id="@+id/ivSplashLogo"
+        android:layout_width="104dp"
+        android:layout_height="125dp"
+        android:contentDescription="Logo AZENKIVO"
+        android:src="@drawable/ic_shield_logo"
+        app:layout_constraintBottom_toTopOf="@+id/tvSplashTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- Nama aplikasi -->
+    <TextView
+        android:id="@+id/tvSplashTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:text="AZENKIVO"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSplashTagline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSplashLogo" />
+
+    <!-- Tagline -->
+    <TextView
+        android:id="@+id/tvSplashTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="SISTEM TANGGAP DARURAT"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSplashEdisi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplashTitle" />
+
+    <!-- Latar badge: putih transparan (alpha 0.25), ukurannya dikunci ke 4 sisi teks badge.
+         Ditulis sebelum TextView supaya digambar di belakang teks. -->
+    <View
+        android:id="@+id/viewEdisiBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.25"
+        android:background="@drawable/bg_badge_soft"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSplashEdisi"
+        app:layout_constraintEnd_toEndOf="@+id/tvSplashEdisi"
+        app:layout_constraintStart_toStartOf="@+id/tvSplashEdisi"
+        app:layout_constraintTop_toTopOf="@+id/tvSplashEdisi" />
+
+    <!-- Badge edisi: teks putih tebal -->
+    <TextView
+        android:id="@+id/tvSplashEdisi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="5dp"
+        android:text="EDISI SIAGA INDONESIA"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplashTagline" />
+
+    <!-- Hotline nasional di bagian bawah -->
+    <TextView
+        android:id="@+id/tvSplashHotline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Hotline 112 • 119 • 113 • 115"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

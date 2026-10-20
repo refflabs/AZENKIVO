@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Latar kolom input: garis berubah merah saat kolom sedang diketik (focused).
+     LinearLayout pembungkus memakai addStatesFromChildren supaya ikut status fokus EditText. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/card_bg" />
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/emergency_red" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/background_light" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/card_stroke" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+</selector>

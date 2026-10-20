@@ -5,202 +5,292 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/text_primary"
     tools:context=".LoginActivity">
 
-    <!-- Background Image from Web (Unsplash) -->
-    <ImageView
-        android:id="@+id/ivBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="Background Keselamatan"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Semi-transparent Dark Overlay -->
-    <View
-        android:id="@+id/vOverlay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#A60F172A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="20dp">
 
-            <!-- Top Header -->
+            <!-- Badge merah -->
             <TextView
                 android:id="@+id/tvHeaderTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/bg_button_emergency"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="6dp"
-                android:text="EMERGENCY RESPONSE APP"
+                android:background="@drawable/bg_pill_red"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing="0.08"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="5dp"
+                android:text="EMERGENCY RESPONSE"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="10sp" />
 
-            <!-- CardView Pembungkus Form Login (Sesuai Ketentuan Dosen) -->
+            <!-- Judul -->
+            <TextView
+                android:id="@+id/tvLoginTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:text="Masuk Akun Siaga"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/tvLoginSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Akses sistem komando &amp; sinkronisasi koordinat"
+                android:textColor="@color/text_hint"
+                android:textSize="13sp" />
+
+            <!-- Kartu putih berisi form login -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLogin"
-                android:layout_width="0dp"
+                style="@style/Azenkivo.Card"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="12dp"
-                app:cardMaxElevation="16dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeaderTag">
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="20dp">
 
-                    <!-- Logo AZENKIVO -->
-                    <ImageView
-                        android:id="@+id/ivLogo"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="Logo AZENKIVO"
-                        android:src="@drawable/ic_azenkivo_logo" />
-
-                    <!-- App Title -->
-                    <TextView
-                        android:id="@+id/tvAppTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="AZENKIVO"
-                        android:textColor="@color/emergency_red"
-                        android:textSize="26sp" />
-
-                    <!-- Subtitle -->
-                    <TextView
-                        android:id="@+id/tvAppSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:text="@string/app_tagline"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="13sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="18dp"
-                        android:background="#E2E8F0" />
-
-                    <!-- Username Label -->
+                    <!-- Label + input ID Tim -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Username / Email"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Username / ID Tim"
                         android:textColor="@color/text_primary"
-                        android:textSize="13sp" />
+                        android:textSize="12sp" />
 
-                    <EditText
-                        android:id="@+id/edtUsername"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="6dp"
-                        android:background="@drawable/bg_input_field"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="@string/hint_username"
-                        android:inputType="text"
-                        android:paddingHorizontal="16dp"
-                        android:textColor="@color/text_primary"
-                        android:textColorHint="@color/text_hint"
-                        android:textSize="14sp" />
+                        android:addStatesFromChildren="true"
+                        android:background="@drawable/bg_input_state"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="4dp">
 
-                    <!-- Password Label -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Kata Sandi"
-                        android:textColor="@color/text_primary"
-                        android:textSize="13sp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_person" />
 
-                    <EditText
-                        android:id="@+id/edtPassword"
+                        <EditText
+                            android:id="@+id/etUsername"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="Tim_Siaga_01"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Label + Lupa Sandi sejajar dalam satu baris -->
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/bg_input_field"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="@string/hint_password"
-                        android:inputType="textPassword"
-                        android:paddingHorizontal="16dp"
-                        android:textColor="@color/text_primary"
-                        android:textColorHint="@color/text_hint"
-                        android:textSize="14sp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <!-- Login Button -->
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Kata Sandi"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvLupaSandi"
+                            style="@style/Azenkivo.Text.Link"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="-8dp"
+                            android:minHeight="36dp"
+                            android:text="Lupa Sandi?"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:addStatesFromChildren="true"
+                        android:background="@drawable/bg_input_state"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="2dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_lock" />
+
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="Kata sandi"
+                            android:importantForAutofill="no"
+                            android:inputType="textPassword"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
+                            android:textSize="14sp" />
+
+                        <!-- Area sentuh 44dp, ikon tetap 20dp (padding 12dp) -->
+                        <ImageView
+                            android:id="@+id/ivTogglePassword"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Lihat kata sandi"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_eye" />
+                    </LinearLayout>
+
+                    <!-- Tombol Masuk -->
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnLogin"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:layout_marginTop="24dp"
-                        android:background="@drawable/bg_button_emergency"
-                        android:elevation="4dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/bg_pill_red"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="@string/btn_login"
+                        android:letterSpacing="0.04"
+                        android:text="MASUK SISTEM"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
-                    <!-- Quick Demo Hint -->
-                    <TextView
-                        android:id="@+id/tvDemoNote"
+                    <!-- Pemisah "atau" -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/card_stroke" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="12dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="atau"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/card_stroke" />
+                    </LinearLayout>
+
+                    <!-- Tombol Akses Cepat Tamu (pill sekunder) -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnTamu"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_pill_red_light"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Akses Cepat Tamu (Darurat)"
+                        android:textAllCaps="false"
+                        android:textColor="@color/emergency_red"
+                        android:textSize="13sp" />
+
+                    <!-- Daftar Relawan (satu baris, area sentuh 48dp) -->
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="14dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="*Masuk langsung untuk mencoba aplikasi"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="11sp" />
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:minHeight="48dp"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Belum punya akun?"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvDaftarRelawan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="6dp"
+                            android:text="Daftar Relawan"
+                            android:textColor="@color/emergency_red"
+                            android:textSize="12sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Catatan mode demo -->
+            <TextView
+                android:id="@+id/tvDemoNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Mode demo: ID Tim dan kata sandi diisi sama"
+                android:textColor="@color/text_hint"
+                android:textSize="11sp" />
+
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

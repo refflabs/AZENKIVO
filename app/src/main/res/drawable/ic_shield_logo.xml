@@ -1,0 +1,32 @@
+<!-- Logo perisai AZENKIVO (sesuai splash Figma):
+     perisai luar putih transparan, perisai dalam putih, palang merah, garis detak jantung putih -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="120dp"
+    android:viewportWidth="100"
+    android:viewportHeight="120">
+
+    <!-- Perisai luar (putih 30%) -->
+    <path
+        android:fillAlpha="0.3"
+        android:fillColor="@color/white"
+        android:pathData="M50,2 L94,18 L94,54 C94,84 75,106 50,118 C25,106 6,84 6,54 L6,18 Z" />
+
+    <!-- Perisai dalam (putih) -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M50,12 L85,25 L85,54 C85,79 70,97 50,107 C30,97 15,79 15,54 L15,25 Z" />
+
+    <!-- Palang merah -->
+    <path
+        android:fillColor="@color/emergency_red"
+        android:pathData="M42,30 L58,30 L58,44 L72,44 L72,60 L58,60 L58,74 L42,74 L42,60 L28,60 L28,44 L42,44 Z" />
+
+    <!-- Garis detak jantung -->
+    <path
+        android:pathData="M30,52 L40,52 L44,42 L50,64 L55,48 L58,52 L70,52"
+        android:strokeWidth="3.5"
+        android:strokeColor="@color/white"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Latar root merah supaya area status bar menyatu dengan header merah tiap Fragment -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/emergency_red"
+    tools:context=".BaseActivity">
+
+    <!-- Wadah tempat Fragment ditampilkan -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/divider_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Garis tipis di atas bottom nav (sesuai desain) -->
+    <View
+        android:id="@+id/divider_nav"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/card_stroke"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view" />
+
+    <!-- Beda dari modul: theme project Material3, jadi style-nya Widget.Material3.*
+         (modul memakai Widget.MaterialComponents.BottomNavigationView.Colored) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        style="@style/Widget.Material3.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        app:itemActiveIndicatorStyle="@style/AzenkivoBottomNavIndicator"
+        app:itemIconTint="@color/selector_bottom_nav"
+        app:itemTextAppearanceActive="@style/AzenkivoNavLabelActive"
+        app:itemTextAppearanceInactive="@style/AzenkivoNavLabel"
+        app:itemTextColor="@color/selector_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

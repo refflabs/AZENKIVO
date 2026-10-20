@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Option Menu Toolbar (dipasang di BaseActivity, tampil di semua tab) -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Ikon lonceng, selalu tampil di Toolbar -->
+    <item
+        android:id="@+id/action_notifikasi"
+        android:icon="@drawable/ic_notifikasi_circle"
+        android:title="Notifikasi"
+        app:showAsAction="always" />
+
+    <!-- Masuk ke menu titik tiga -->
+    <item
+        android:id="@+id/action_info_bmkg"
+        android:title="Info BMKG"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_tentang"
+        android:title="Tentang Aplikasi"
+        app:showAsAction="never" />
+
+</menu>
