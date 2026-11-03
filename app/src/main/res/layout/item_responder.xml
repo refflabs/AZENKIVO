@@ -1,102 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Tampilan satu baris unit responder (seperti item_message.xml di Modul P7 langkah 4.3) -->
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Kartu satu unit responder -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardResponder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/card_bg"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/surface"
     app:cardCornerRadius="16dp"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    app:rippleColor="@color/brand_tint"
+    app:strokeColor="@color/stroke"
+    app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_card_stroke"
-        android:padding="14dp">
+        android:padding="16dp">
 
-        <!-- Foto bulat: ImageView dibungkus CardView dengan radius setengah ukuran -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardFoto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Foto bulat + titik status -->
+        <FrameLayout
+            android:id="@+id/frameFoto"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/avatarImg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/emergency_red_light"
-                android:contentDescription="Foto petugas"
-                android:scaleType="centerCrop" />
-        </androidx.cardview.widget.CardView>
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/brand_tint"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/Azenkivo.Shape.Circle"
+                tools:src="@drawable/ph_avatar" />
+
+            <View
+                android:id="@+id/dotStatus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_status_dot"
+                android:importantForAccessibility="no" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textNamaUnit"
+            style="@style/Azenkivo.Type.Label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Nama Unit"
-            android:textColor="@color/text_primary"
-            android:textSize="14sp"
+            android:ellipsize="end"
+            android:fontFamily="@font/jakarta_bold"
+            android:maxLines="2"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/textEta"
-            app:layout_constraintStart_toEndOf="@+id/cardFoto"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/frameFoto"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Unit Medis Reaksi Cepat 02" />
 
         <TextView
             android:id="@+id/textInstansi"
+            style="@style/Azenkivo.Type.BodySmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Instansi"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="@+id/textNamaUnit"
             app:layout_constraintStart_toStartOf="@+id/textNamaUnit"
-            app:layout_constraintTop_toBottomOf="@+id/textNamaUnit" />
+            app:layout_constraintTop_toBottomOf="@+id/textNamaUnit"
+            tools:text="RSUD Siaga • dr. Hendra" />
 
-        <TextView
-            android:id="@+id/textStatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Status"
-            android:textColor="@color/safety_green"
-            android:textSize="11sp"
-            app:layout_constraintEnd_toEndOf="@+id/textNamaUnit"
-            app:layout_constraintStart_toStartOf="@+id/textNamaUnit"
-            app:layout_constraintTop_toBottomOf="@+id/textInstansi" />
-
+        <!-- Badge ETA: Slate Blue -->
         <TextView
             android:id="@+id/textEta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_badge_red_light"
-            android:fontFamily="@font/poppins_bold"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="3dp"
-            android:text="4 menit"
-            android:textColor="@color/emergency_red"
-            android:textSize="11sp"
+            android:background="@drawable/bg_badge_accent"
+            android:fontFamily="@font/jakarta_bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/accent_strong"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="4 menit" />
+
+        <!-- Penghalang: baris 2 selalu di bawah elemen tertinggi baris 1 -->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="frameFoto,textInstansi,textEta" />
+
+        <View
+            android:id="@+id/dividerItem"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrierRow1" />
+
+        <!-- Baris 2: status + jarak -->
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/jakarta_semibold"
+            android:maxLines="1"
+            android:textColor="@color/status_online"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toTopOf="@+id/textJarak"
+            app:layout_constraintEnd_toStartOf="@+id/btnHubungi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnHubungi"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Sirene Aktif • Prioritas Utama" />
 
         <TextView
             android:id="@+id/textJarak"
-            android:layout_width="wrap_content"
+            style="@style/Azenkivo.Type.BodySmall"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="1.4 km"
-            android:textColor="@color/text_secondary"
-            android:textSize="11sp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnHubungi"
+            app:layout_constraintEnd_toEndOf="@+id/textStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textStatus"
+            tools:text="1.4 km" />
+
+        <!-- Aksi cepat: tonal Slate Blue, tinggi 48dp -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHubungi"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:focusable="true"
+            android:fontFamily="@font/jakarta_semibold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/resp_call"
+            android:textColor="@color/accent_strong"
+            android:textSize="14sp"
+            app:backgroundTint="@color/accent_tint"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_call"
+            app:iconPadding="8dp"
+            app:iconSize="18dp"
+            app:iconTint="@color/accent_strong"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textEta" />
+            app:layout_constraintTop_toBottomOf="@+id/dividerItem"
+            app:rippleColor="@color/accent_tint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

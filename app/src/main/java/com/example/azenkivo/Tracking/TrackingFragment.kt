@@ -7,20 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.azenkivo.BaseActivity
+import com.example.azenkivo.MainActivity
 import com.example.azenkivo.R
 import com.example.azenkivo.databinding.FragmentTrackingBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class TrackingFragment : Fragment() {
 
     private var _binding: FragmentTrackingBinding? = null
     private val binding get() = _binding!!
 
-    // Data dummy unit responder (dispatch disimulasikan, belum ada backend).
-    // Urutan dari yang paling cepat tiba (ETA terkecil).
+    // Data dummy unit responder
     private val responderList = listOf(
         ResponderModel("Unit Medis Reaksi Cepat 02", "RSUD Siaga • dr. Hendra", "Sirene Aktif • Prioritas Utama", "1.4 km", "4 menit", "119", "https://avatar.iran.liara.run/public/1"),
         ResponderModel("Relawan Siaga RT 04", "Relawan AZENKIVO • Fajar", "Menuju Lokasi", "0.6 km", "5 menit", "112", "https://avatar.iran.liara.run/public/2"),
@@ -42,15 +41,17 @@ class TrackingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Live Tracking"
-        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = "Unit responder menuju lokasi"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.track_title)
+        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle =
+            getString(R.string.track_subtitle, responderList.size)
 
-        // Ringkasan ETA & jarak dari unit pertama (paling cepat tiba)
+        // Ringkasan ETA & jarak dari unit pertama
         val terdekat = responderList[0]
-        binding.tvEta.text = "ETA: ${terdekat.eta.uppercase()}"
-        binding.tvJarak.text = "Jarak: ${terdekat.jarak} ke lokasi"
+        binding.tvEta.text = terdekat.eta
+        binding.tvJarak.text = getString(R.string.track_distance, terdekat.jarak)
+        binding.tvJumlahUnit.text = getString(R.string.track_list_count, responderList.size)
 
-        // Pasang Custom Adapter ke ListView (Modul P7 langkah 4.7)
+        // Pasang Custom Adapter ke ListView
         val adapter = ResponderAdapter(requireContext(), responderList)
         binding.listResponder.adapter = adapter
 
@@ -63,15 +64,15 @@ class TrackingFragment : Fragment() {
 
         // Batal SOS -> konfirmasi, lalu kembali ke Beranda
         binding.btnBatalSos.setOnClickListener {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Batalkan SOS?")
-                .setMessage("Unit responder akan diberi tahu bahwa keadaan sudah aman.")
-                .setPositiveButton("Ya, Batalkan") { dialog, _ ->
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.track_dialog_cancel_title)
+                .setMessage(R.string.track_dialog_cancel_message)
+                .setPositiveButton(R.string.track_dialog_cancel_yes) { dialog, _ ->
                     dialog.dismiss()
-                    Toast.makeText(requireContext(), "SOS dibatalkan", Toast.LENGTH_SHORT).show()
-                    (requireActivity() as BaseActivity).bukaTab(R.id.beranda)
+                    Toast.makeText(requireContext(), R.string.track_cancelled, Toast.LENGTH_SHORT).show()
+                    (requireActivity() as MainActivity).bukaTab(R.id.beranda)
                 }
-                .setNegativeButton("Tidak") { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton(R.string.track_dialog_cancel_no) { dialog, _ -> dialog.dismiss() }
                 .show()
         }
     }

@@ -1,29 +1,189 @@
 <resources>
     <string name="app_name">AZENKIVO</string>
-    <string name="app_tagline">Sistem Keselamatan &amp; Tanggap Darurat</string>
-    <string name="login_title">Masuk ke AZENKIVO</string>
-    <string name="login_subtitle">Akses Cepat Panduan &amp; Bantuan Darurat</string>
-    <string name="hint_username">Nama Pengguna / Email</string>
-    <string name="hint_password">Kata Sandi</string>
-    <string name="btn_login">MASUK SEKARANG</string>
-    <string name="err_empty_fields">Silakan isi username dan password!</string>
     
+    <!-- LoginActivity -->
+    <string name="login_overline">Sistem Tanggap Darurat</string>
+    <string name="login_heading">Masuk Akun Siaga</string>
+    <string name="login_caption">Masuk untuk mulai menggunakan aplikasi.</string>
+    <string name="login_label_username">Username / ID Tim</string>
+    <string name="login_helper_username">Contoh: Tim_Siaga_01</string>
+    <string name="login_label_password">Kata Sandi</string>
+    <string name="login_helper_password">Mode demo: kata sandi sama dengan ID Tim</string>
+    <string name="login_forgot">Lupa Sandi?</string>
+    <string name="login_submit">Masuk Sistem</string>
+    <string name="login_guest">Masuk sebagai Tamu (Darurat)</string>
+    <string name="login_no_account">Belum punya akun?</string>
+    <string name="login_register">Daftar Relawan</string>
+    <string name="login_logo_desc">Logo AZENKIVO</string>
+    <string name="login_err_username">Username / ID Tim wajib diisi</string>
+    <string name="login_err_password">Kata sandi wajib diisi</string>
+    <string name="login_failed_title">Login Gagal</string>
+    <string name="login_failed_message">ID Tim atau kata sandi salah. Silakan coba lagi.</string>
+    <string name="login_forgot_message">Hubungi koordinator tim siaga untuk mengatur ulang kata sandi.\n\nMode demo: kata sandi sama dengan ID Tim.</string>
+    <string name="login_register_message">Pendaftaran relawan belum tersedia. Sementara ini gunakan Masuk sebagai Tamu.</string>
+    <string name="login_guest_name">Tamu</string>
+    <string name="dialog_ok">OK</string>
+
+    <!-- HomeFragment -->
+    <string name="home_greeting">Halo, %1$s</string>
+    <string name="home_default_name">Tim Siaga</string>
+    <string name="home_status_default">Siaga 24 jam</string>
+    <string name="home_status_guest">Mode Tamu</string>
+    <string name="home_area_label">Kondisi sekitar Anda</string>
+    <string name="home_area_badge">Aman</string>
+    <string name="home_area_title">Aman, tetap waspada</string>
+    <string name="home_area_alert">Gempa M 5.2 · 12 km barat laut</string>
+    <string name="home_area_action">Info BMKG</string>
+    <string name="home_area_desc">Kondisi sekitar Anda aman. Peringatan gempa M 5.2, 12 kilometer barat laut. Ketuk untuk info BMKG.</string>
+    <string name="home_sos">SOS</string>
+    <string name="home_sos_desc">Tombol SOS. Tahan dua detik untuk mengirim sinyal darurat.</string>
+    <string name="home_sos_action">kirim sinyal SOS</string>
+    <string name="home_sos_title">Tahan untuk SOS</string>
+    <string name="home_sos_caption">Lepas untuk batal · 2 detik</string>
+    <string name="home_sos_hint">Tahan tombol SOS selama 2 detik</string>
+    <string name="home_hotline_title">Panggilan cepat</string>
+    <string name="home_hotline_all">Semua (4)</string>
+    <string name="home_112_label">Darurat umum</string>
+    <string name="home_119_label">Ambulans &amp; medis</string>
+    <string name="home_113_label">Pemadam kebakaran</string>
+    <string name="home_115_label">Basarnas (SAR)</string>
+    <string name="home_call_desc">Panggil %1$s, %2$s</string>
+    <string name="home_sop_title">Panduan P3K &amp; bencana</string>
+    <string name="home_sop_body">CPR, luka bakar, gempa, dan lainnya</string>
+    <string name="home_sop_action">Buka</string>
+    <string name="home_dialog_hotline_title">Semua Nomor Darurat</string>
+    <string name="home_dialog_close">Tutup</string>
+    <string name="home_dialog_sos_title">Kirim Sinyal SOS?</string>
+    <string name="home_dialog_sos_message">Lokasi Anda akan dikirim ke petugas terdekat.</string>
+    <string name="home_dialog_sos_send">Kirim SOS</string>
+    <string name="home_dialog_sos_cancel">Batal</string>
+    <string name="home_sos_note">Lokasi dikirim ke petugas terdekat</string>
+    <string name="home_sos_sent">SOS terkirim</string>
+
+    <!-- HomeFragment: bagian proyek & logout -->
+    <string name="home_project_title">Tentang AZENKIVO</string>
+    <string name="home_project_body">Fitur dan teknologi</string>
+    <string name="home_project_desc">Buka detail proyek</string>
+    <string name="login_toast_input">Login berhasil · Username: %1$s</string>
+
+    <!-- TrackingFragment -->
+    <string name="track_title">Live Tracking</string>
+    <string name="track_subtitle">%1$d unit menuju lokasi Anda</string>
+    <string name="track_map_desc">Peta simulasi: posisi Anda dan rute unit responder terdekat</string>
+    <string name="track_gps">GPS aktif · presisi 3 m</string>
+    <string name="track_eta_label">Unit terdekat tiba dalam</string>
+    <string name="track_distance">%1$s dari lokasi Anda</string>
+    <string name="track_sos_active">SOS aktif</string>
+    <string name="track_list_title">Unit responder terdekat</string>
+    <string name="track_list_count">%1$d unit</string>
+    <string name="track_call_ambulance">Hubungi Ambulans</string>
+    <string name="track_cancel_sos">Batal SOS</string>
+    <string name="track_tip">Tetap di tempat yang aman sampai petugas tiba.</string>
+    <string name="track_dialog_cancel_title">Batalkan SOS?</string>
+    <string name="track_dialog_cancel_message">Unit responder akan diberi tahu bahwa keadaan sudah aman.</string>
+    <string name="track_dialog_cancel_yes">Ya, Batalkan</string>
+    <string name="track_dialog_cancel_no">Tidak</string>
+    <string name="track_cancelled">SOS dibatalkan</string>
+
+    <!-- item_responder / ResponderAdapter -->
+    <string name="resp_call">Hubungi</string>
+    <string name="resp_photo_desc">Foto %1$s</string>
+    <string name="resp_call_desc">Hubungi %1$s di nomor %2$s</string>
+    <string name="resp_card_desc">%1$s, %2$s. %3$s. Jarak %4$s, tiba dalam %5$s.</string>
+    <string name="resp_dialog_message">Instansi: %1$s\nStatus: %2$s\nJarak: %3$s\nPerkiraan tiba: %4$s</string>
+    <string name="resp_dialog_call">Hubungi %1$s</string>
+    <string name="resp_dialog_close">Tutup</string>
+
+    <!-- PanduanFragment -->
+    <string name="pand_title">Panduan SOP</string>
+    <string name="pand_subtitle">P3K &amp; mitigasi bencana</string>
+    <string name="pand_intro">Pilih situasi untuk melihat langkahnya.</string>
+    <string name="pand_list_title">Daftar SOP</string>
+    <string name="pand_count">%1$d panduan</string>
+
+    <!-- SopDetailActivity -->
+    <string name="det_toolbar">Detail SOP</string>
+    <string name="det_header_desc">Ilustrasi %1$s</string>
+    <string name="det_principle_title">Prinsip 3A: aman diri, pasien, lingkungan</string>
+    <string name="det_principle_body">Pastikan area sekitar bebas bahaya sebelum bertindak.</string>
+    <string name="det_steps_title">Langkah penanganan</string>
+    <string name="det_step_desc">Langkah %1$d dari %2$d. %3$s. %4$s</string>
+    <string name="det_call">Panggil %1$s sekarang</string>
+    <string name="det_call_caption">Membuka aplikasi telepon dengan nomor terisi</string>
+
+    <!-- ProfileFragment -->
+    <string name="prof_title">Profil</string>
+    <string name="prof_role_volunteer">Relawan Siaga</string>
+    <string name="prof_role_guest">Mode Tamu</string>
+    <string name="prof_medical_title">Identitas medis &amp; darurat</string>
+    <string name="prof_medical_note">Membantu petugas saat menolong Anda.</string>
+    <string name="prof_blood_label">Golongan darah</string>
+    <string name="prof_contact_label">Kontak darurat keluarga</string>
+    <string name="prof_notes_label">Catatan medis penting</string>
+    <string name="prof_not_set">Belum diisi</string>
+    <string name="prof_edit_desc">%1$s: %2$s. Ketuk untuk mengubah.</string>
+    <string name="prof_contact_hint">Nama &amp; nomor, mis. Ibu · 0812xxxx</string>
+    <string name="prof_notes_hint">Alergi, penyakit, obat rutin</string>
+    <string name="prof_save">Simpan</string>
+    <string name="prof_cancel">Batal</string>
+    <string name="prof_clear">Kosongkan</string>
+    <string name="prof_saved">Tersimpan</string>
+    <string name="prof_settings_title">Pengaturan &amp; preferensi</string>
+    <string name="prof_notif_title">Notifikasi siaga</string>
+    <string name="prof_notif_body">Peringatan gempa &amp; cuaca ekstrem</string>
+    <string name="prof_gps_title">Izin lokasi GPS</string>
+    <string name="prof_gps_on">Aktif · lokasi dibagikan saat SOS</string>
+    <string name="prof_gps_off">Nonaktif · ketuk untuk mengizinkan</string>
+    <string name="prof_gps_settings_title">Matikan izin lokasi?</string>
+    <string name="prof_gps_settings_message">Izin lokasi hanya bisa dicabut dari Pengaturan sistem. Buka pengaturan aplikasi sekarang?</string>
+    <string name="prof_gps_open_settings">Buka Pengaturan</string>
+    <string name="prof_gps_denied">Izin lokasi ditolak. Tracking SOS tidak bisa memakai lokasi Anda.</string>
+    <string name="prof_logout">Keluar dari akun</string>
+    <string name="prof_version">Versi 1.0</string>
+
+    <!-- Menu toolbar -->
+    <string name="menu_senter_on">Nyalakan senter</string>
+    <string name="menu_senter_off">Matikan senter</string>
+    <string name="menu_pesan_darurat">Kirim pesan darurat</string>
+    <string name="menu_kontak_keluarga">Telepon kontak keluarga</string>
+    <string name="senter_tidak_ada">HP ini tidak punya senter</string>
+    <string name="pesan_darurat_isi">Saya %1$s sedang dalam keadaan darurat dan butuh bantuan. Tolong hubungi saya segera.</string>
+    <string name="pesan_darurat_pilih">Kirim lewat</string>
+    <string name="kontak_kosong_judul">Kontak keluarga belum diisi</string>
+    <string name="kontak_kosong_pesan">Isi nomor kontak keluarga di Profil supaya bisa ditelepon dari sini.</string>
+    <string name="kontak_kosong_isi">Isi di Profil</string>
+    <string name="kontak_kosong_batal">Nanti</string>
+
     <!-- MainActivity -->
-    <string name="welcome_user">Halo, Siaga Darurat!</string>
-    <string name="main_header">Pusat Tanggap Darurat</string>
-    <string name="main_desc">Akses cepat nomor darurat nasional dan panduan evakuasi bencana.</string>
-    <string name="btn_detail_guide">Lihat Panduan &amp; SOP Darurat</string>
-    <string name="btn_logout">Keluar (Log Out)</string>
-    
-    <!-- DetailActivity -->
-    <string name="detail_title">Detail SOP Tanggap Darurat</string>
-    <string name="detail_project_title">AZENKIVO - Tanggap &amp; Selamat</string>
-    <string name="detail_desc">AZENKIVO adalah platform respon cepat tanggap darurat yang mengintegrasikan panduan pertolongan pertama (P3K), langkah evakuasi saat bencana gempa dan kebakaran, serta integrasi nomor darurat nasional Indonesia.</string>
-    <string name="btn_back">Kembali ke Beranda</string>
-    
-    <!-- AlertDialog Logout -->
-    <string name="dialog_logout_title">Konfirmasi Log Out</string>
-    <string name="dialog_logout_message">Apakah Anda yakin ingin keluar dari aplikasi AZENKIVO?</string>
-    <string name="dialog_logout_yes">Ya, Keluar</string>
+    <string name="btn_logout">Keluar</string>
+    <string name="main_logout_toast">Berhasil keluar</string>
+    <string name="main_stay_toast">Tetap di Beranda</string>
+    <string name="dialog_logout_title">Logout</string>
+    <string name="dialog_logout_message">Yakin ingin keluar?</string>
+    <string name="dialog_logout_yes">Ya</string>
     <string name="dialog_logout_no">Tidak</string>
+
+    <!-- DetailActivity -->
+    <string name="detail_title">Detail Proyek</string>
+    <string name="detail_desc">Aplikasi untuk meminta bantuan darurat, memantau petugas yang datang, dan membaca panduan P3K.</string>
+    <string name="btn_back">Kembali ke Beranda</string>
+    <string name="dp_header_desc">Banner proyek AZENKIVO</string>
+    <string name="dp_overline">Tentang proyek</string>
+    <string name="dp_tagline">Aplikasi siaga darurat</string>
+    <string name="dp_chip_platform">Android</string>
+    <string name="dp_chip_lang">Kotlin</string>
+    <string name="dp_chip_ui">Material 3</string>
+    <string name="dp_features_title">Fitur</string>
+    <string name="dp_f1_title">Tombol SOS</string>
+    <string name="dp_f1_body">Tahan 2 detik, lokasi dikirim ke petugas terdekat.</string>
+    <string name="dp_f2_title">Tracking petugas</string>
+    <string name="dp_f2_body">Lihat jarak, waktu tiba, dan hubungi petugas langsung.</string>
+    <string name="dp_f3_title">Panduan P3K &amp; bencana</string>
+    <string name="dp_f3_body">8 panduan langkah demi langkah.</string>
+    <string name="dp_f4_title">Nomor darurat</string>
+    <string name="dp_f4_body">112, 119, 113, 115 sekali ketuk.</string>
+    <string name="dp_f5_title">Data medis</string>
+    <string name="dp_f5_body">Golongan darah, kontak keluarga, dan catatan medis di Profil.</string>
+    <string name="dp_tech_title">Teknologi</string>
+    <string name="dp_tech_body">Kotlin · ViewBinding · Intent · SharedPreferences · AlertDialog · CardView · Fragment · Bottom Navigation · ListView · Glide · WebView</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Badge ETA/jarak: Slate Blue tint, sudut 8dp -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/accent_tint" />
+    <corners android:radius="8dp" />
+</shape>

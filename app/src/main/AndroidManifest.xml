@@ -2,20 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Izin internet: untuk Glide (foto unit responder) dan WebView Info BMKG -->
+    <!-- Izin internet: untuk Glide dan WebView Info BMKG -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Izin lokasi -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_azenkivo_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_azenkivo_logo"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AZENKIVO">
 
-        <!-- SplashActivity kembali menjadi Launcher utama (Modul P7 langkah 2.4) -->
+        <!-- SplashActivity kembali menjadi Launcher utama -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -28,24 +31,29 @@
             </intent-filter>
         </activity>
 
-        <!-- Halaman Login (diarahkan dari SplashActivity jika belum login) -->
+        <!-- Halaman Login -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Halaman utama dengan Bottom Navigation (pengganti MainActivity) -->
+        <!-- Halaman utama setelah login + Bottom Navigation -->
         <activity
-            android:name=".BaseActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <!-- Halaman Detail SOP Darurat -->
+        <!-- Detail Proyek AZENKIVO -->
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
 
-        <!-- Halaman Info BMKG (WebView) -->
+        <!-- Detail SOP P3K & mitigasi -->
+        <activity
+            android:name=".SopDetailActivity"
+            android:exported="false" />
+
+        <!-- Halaman Info BMKG -->
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />

@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Detail Proyek AZENKIVO -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light"
+    android:background="@color/canvas"
     tools:context=".DetailActivity">
 
-    <!-- Toolbar dengan tombol back. Tinggi wrap_content karena di kode diberi padding
-         setinggi status bar, supaya warna merahnya sampai ke atas layar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/emergency_red"
-        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        android:layout_height="64dp"
+        android:background="@color/canvas"
+        android:theme="@style/ThemeOverlay.Azenkivo.Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.Material3.Light"
+        app:popupTheme="@style/ThemeOverlay.Azenkivo.Toolbar"
         app:titleTextAppearance="@style/AzenkivoToolbarTitle"
-        app:titleTextColor="@color/white"
-        tools:title="Detail SOP: Pertolongan Pertama (P3K)" />
+        app:titleTextColor="@color/ink"
+        tools:title="Detail Proyek" />
 
     <ScrollView
+        android:id="@+id/scrollDetail"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/btnPanggil"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -38,180 +37,415 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
 
-            <!-- Kartu hero gelap -->
-            <androidx.cardview.widget.CardView
+            <!-- Banner proyek -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgHeader"
+                android:layout_width="match_parent"
+                android:layout_height="192dp"
+                android:background="@color/brand"
+                android:contentDescription="@string/dp_header_desc"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ill_project_banner"
+                app:shapeAppearanceOverlay="@style/Azenkivo.Shape.Rounded16" />
+
+            <TextView
+                style="@style/Azenkivo.Type.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/dp_overline"
+                android:textColor="@color/accent_strong" />
+
+            <TextView
+                android:id="@+id/tvJudulProyek"
+                style="@style/Azenkivo.Type.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:accessibilityHeading="true"
+                android:letterSpacing="0.02"
+                android:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/tvTagline"
+                style="@style/Azenkivo.Type.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dp_tagline"
+                android:textColor="@color/ink_secondary"
+                android:textSize="16sp" />
+
+            <!-- Chip platform -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_chip_neutral"
+                    android:fontFamily="@font/jakarta_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/dp_chip_platform"
+                    android:textColor="@color/ink"
+                    android:textSize="13sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_chip_neutral"
+                    android:fontFamily="@font/jakarta_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/dp_chip_lang"
+                    android:textColor="@color/ink"
+                    android:textSize="13sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_chip_neutral"
+                    android:fontFamily="@font/jakarta_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/dp_chip_ui"
+                    android:textColor="@color/ink"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Deskripsi proyek -->
+            <TextView
+                android:id="@+id/tvDeskripsiProyek"
+                style="@style/Azenkivo.Type.Body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/text_primary"
-                app:cardCornerRadius="20dp"
+                android:layout_marginTop="16dp"
+                android:lineSpacingMultiplier="1.4"
+                android:text="@string/detail_desc"
+                android:textColor="@color/ink" />
+
+            <!-- Fitur unggulan -->
+            <TextView
+                style="@style/Azenkivo.Type.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:accessibilityHeading="true"
+                android:text="@string/dp_features_title"
+                android:textSize="18sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFitur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="20dp">
-
-                    <FrameLayout
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="@color/emergency_red">
-
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_gravity="center"
-                            android:contentDescription="Ikon SOP"
-                            android:src="@drawable/ic_panduan"
-                            app:tint="@color/white" />
-                    </FrameLayout>
-
+                    android:background="@drawable/bg_group_surface"
+                    android:orientation="vertical">
+                    <!-- Fitur 1 -->
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:screenReaderFocusable="true">
 
-                        <TextView
-                            android:id="@+id/tvJudul"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Resusitasi Jantung Paru"
-                            android:textColor="@color/white"
-                            android:textSize="17sp" />
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile"
+                            android:backgroundTint="@color/danger_tint">
 
-                        <TextView
-                            android:id="@+id/tvDeskripsi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Deskripsi singkat"
-                            android:textColor="@color/text_hint"
-                            android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_shield"
+                                app:tint="@color/danger" />
+                        </FrameLayout>
 
-                        <TextView
-                            android:id="@+id/tvBadge"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:background="@drawable/bg_badge_dark"
-                            android:fontFamily="@font/poppins_bold"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="4dp"
-                            android:text="BADGE"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/jakarta_bold"
+                                android:text="@string/dp_f1_title"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingMultiplier="1.35"
+                                android:text="@string/dp_f1_body" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+                    <!-- Fitur 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:screenReaderFocusable="true">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile"
+                            android:backgroundTint="@color/accent_tint">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_tracking"
+                                app:tint="@color/accent" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/jakarta_bold"
+                                android:text="@string/dp_f2_title"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingMultiplier="1.35"
+                                android:text="@string/dp_f2_body" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+                    <!-- Fitur 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:screenReaderFocusable="true">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile"
+                            android:backgroundTint="@color/brand_tint">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_panduan"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/jakarta_bold"
+                                android:text="@string/dp_f3_title"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingMultiplier="1.35"
+                                android:text="@string/dp_f3_body" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+                    <!-- Fitur 4 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:screenReaderFocusable="true">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile"
+                            android:backgroundTint="@color/brand_tint">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_call"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/jakarta_bold"
+                                android:text="@string/dp_f4_title"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingMultiplier="1.35"
+                                android:text="@string/dp_f4_body" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+                    <!-- Fitur 5 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:screenReaderFocusable="true">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile"
+                            android:backgroundTint="@color/brand_tint">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_water_drop"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/jakarta_bold"
+                                android:text="@string/dp_f5_title"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingMultiplier="1.35"
+                                android:text="@string/dp_f5_body" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Banner Prinsip 3A -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_banner_warning"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="14dp">
-
-                <FrameLayout
-                    style="@style/Azenkivo.IconCircle.Small"
-                    android:backgroundTint="@color/safety_orange">
-
-                    <ImageView
-                        style="@style/Azenkivo.IconInCircle"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_warning_mark" />
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/Azenkivo.Text.WarningTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Prinsip 3A: Aman Diri, Pasien, Lingkungan"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        style="@style/Azenkivo.Text.WarningBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pastikan area sekitar bebas bahaya sebelum bertindak."
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-
+            <!-- Teknologi -->
             <TextView
+                style="@style/Azenkivo.Type.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Langkah Penanganan Darurat:"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
+                android:layout_marginTop="32dp"
+                android:accessibilityHeading="true"
+                android:text="@string/dp_tech_title"
+                android:textSize="18sp" />
 
-            <!-- 4 kartu langkah memakai layout item_langkah.xml yang sama -->
-            <include
-                android:id="@+id/step1"
-                layout="@layout/item_langkah"
+            <TextView
+                style="@style/Azenkivo.Type.Body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp" />
+                android:layout_marginTop="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="@string/dp_tech_body" />
 
-            <include
-                android:id="@+id/step2"
-                layout="@layout/item_langkah"
+            <!-- Kembali ke MainActivity -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKembali"
+                style="@style/Azenkivo.Button.Secondary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
-
-            <include
-                android:id="@+id/step3"
-                layout="@layout/item_langkah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
-
-            <include
-                android:id="@+id/step4"
-                layout="@layout/item_langkah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="32dp"
+                android:text="@string/btn_back" />
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Tombol panggil nomor darurat (selalu terlihat di bawah) -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPanggil"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="@drawable/bg_pill_red"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Panggil 119 Sekarang"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

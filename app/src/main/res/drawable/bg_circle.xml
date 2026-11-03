@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Lingkaran polos. Warnanya diatur dari layout lewat android:backgroundTint -->
+<!-- Lingkaran polos -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <solid android:color="@color/white" />

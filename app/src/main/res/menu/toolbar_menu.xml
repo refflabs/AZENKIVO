@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Option Menu Toolbar (dipasang di BaseActivity, tampil di semua tab) -->
+<!-- Option Menu Toolbar: lonceng + aksi cepat darurat -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Ikon lonceng, selalu tampil di Toolbar -->
     <item
         android:id="@+id/action_notifikasi"
         android:icon="@drawable/ic_notifikasi_circle"
         android:title="Notifikasi"
         app:showAsAction="always" />
 
-    <!-- Masuk ke menu titik tiga -->
     <item
-        android:id="@+id/action_info_bmkg"
-        android:title="Info BMKG"
+        android:id="@+id/action_senter"
+        android:title="@string/menu_senter_on"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_tentang"
-        android:title="Tentang Aplikasi"
+        android:id="@+id/action_pesan_darurat"
+        android:title="@string/menu_pesan_darurat"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_kontak_keluarga"
+        android:title="@string/menu_kontak_keluarga"
         app:showAsAction="never" />
 
 </menu>

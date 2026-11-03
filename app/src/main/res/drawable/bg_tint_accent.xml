@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Baris informasi: tint biru lembut, sudut 16dp -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#1A2563EB">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/accent_tint" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</ripple>

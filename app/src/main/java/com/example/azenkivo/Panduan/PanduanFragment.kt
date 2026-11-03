@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.azenkivo.DetailActivity
+import com.example.azenkivo.SopDetailActivity
+import com.example.azenkivo.R
 import com.example.azenkivo.databinding.FragmentPanduanBinding
 
 class PanduanFragment : Fragment() {
@@ -16,15 +17,7 @@ class PanduanFragment : Fragment() {
     private var _binding: FragmentPanduanBinding? = null
     private val binding get() = _binding!!
 
-    // ===== TAHAP A (Modul P7 langkah 3.2 - 3.3): data 1 teks untuk ArrayAdapter =====
-    private val dataList = listOf(
-        "Resusitasi Jantung Paru (CPR)", "Pendarahan Hebat", "Luka Bakar", "Tersedak",
-        "Patah Tulang", "Gempa Bumi", "Kebakaran Gedung", "Banjir"
-    )
-
-    // ===== TAHAP B (Modul P7 langkah 3.4): data judul + deskripsi untuk SimpleAdapter =====
-    // Key tambahan (kategori, badge, nomor, langkah) tidak ditampilkan di list,
-    // tapi dikirim ke DetailActivity lewat Intent.
+    // Data SOP: judul + deskripsi untuk SimpleAdapter (Modul P7 3.4)
     private val dataListWithDesc = listOf(
         mapOf(
             "title" to "Resusitasi Jantung Paru (CPR)",
@@ -192,37 +185,25 @@ class PanduanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Panduan SOP"
-        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = "P3K & Mitigasi Bencana"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.pand_title)
+        (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = getString(R.string.pand_subtitle)
+        binding.tvJumlahSop.text = getString(R.string.pand_count, dataListWithDesc.size)
 
-        // ===== TAHAP A: ArrayAdapter + simple_list_item_1 (1 teks per baris) =====
-        // Dipakai dulu saat praktik, lalu diganti Tahap B di bawah.
-        // val adapter = ArrayAdapter(
-        //     requireContext(),
-        //     android.R.layout.simple_list_item_1,
-        //     dataList
-        // )
-        // binding.listViewSop.adapter = adapter
-        // binding.listViewSop.setOnItemClickListener { _, _, position, _ ->
-        //     val selectedItem = dataList[position]
-        //     Toast.makeText(requireContext(), "Kamu memilih: $selectedItem", Toast.LENGTH_SHORT).show()
-        // }
-
-        // ===== TAHAP B: SimpleAdapter + simple_list_item_2 (judul + deskripsi) =====
+        // SimpleAdapter: judul, deskripsi, kategori
         val adapter = SimpleAdapter(
             requireContext(),
             dataListWithDesc,
-            android.R.layout.simple_list_item_2,
-            arrayOf("title", "desc"), // key yang diambil dari data
-            intArrayOf(android.R.id.text1, android.R.id.text2) // tempat tampilnya
+            R.layout.item_sop,
+            arrayOf("title", "desc", "kategori"), // key yang diambil dari data
+            intArrayOf(android.R.id.text1, android.R.id.text2, R.id.tvKategoriSop) // tempat tampilnya
         )
         binding.listViewSop.adapter = adapter
 
-        // Klik item -> buka DetailActivity sambil mengirim data lewat putExtra
+        // Klik item -> buka SopDetailActivity dengan putExtra
         binding.listViewSop.setOnItemClickListener { _, _, position, _ ->
             val selectedItem = dataListWithDesc[position]
 
-            val intent = Intent(requireContext(), DetailActivity::class.java)
+            val intent = Intent(requireContext(), SopDetailActivity::class.java)
             intent.putExtra("EXTRA_JUDUL", selectedItem["title"] as String)
             intent.putExtra("EXTRA_DESKRIPSI", selectedItem["desc"] as String)
             intent.putExtra("EXTRA_KATEGORI", selectedItem["kategori"] as String)

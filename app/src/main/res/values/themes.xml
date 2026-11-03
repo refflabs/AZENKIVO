@@ -1,21 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme.
-         1) Light (bukan DayNight): desain AZENKIVO hanya punya mode terang. Dengan DayNight,
-            saat HP dalam dark mode warna teks bawaan jadi terang dan tidak terbaca.
-         2) Font default memakai android:fontFamily. Item "fontFamily" (tanpa android:)
-            DIHAPUS karena AppCompat mengutamakannya di atas android:fontFamily milik
-            tiap TextView, sehingga poppins_bold / poppins_semibold ikut jadi Regular. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.AZENKIVO" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/emergency_red</item>
+        <!-- Guardian Shield: brand navy jadi warna utama Material -->
+        <item name="colorPrimary">@color/brand</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/safety_blue</item>
-        <item name="android:statusBarColor">@color/emergency_red_dark</item>
-        <item name="android:fontFamily">@font/poppins_regular</item>
-        <!-- Cegah fitur "paksa mode gelap" bawaan HP (realme/Oppo/Xiaomi, dll) membalik
-             warna teks jadi terang di atas kartu putih -->
+        <item name="colorPrimaryContainer">@color/brand_tint</item>
+        <item name="colorOnPrimaryContainer">@color/brand</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/accent_tint</item>
+        <item name="colorOnSecondaryContainer">@color/accent_strong</item>
+        <item name="colorError">@color/danger_strong</item>
+        <item name="colorOutline">@color/stroke</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorOnSurfaceVariant">@color/ink_secondary</item>
+        <!-- Permukaan netral (bukan ungu bawaan Material 3) untuk dialog & menu -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorSurfaceVariant">@color/brand_tint</item>
+        <item name="colorSurfaceContainerLowest">@color/surface</item>
+        <item name="colorSurfaceContainerLow">@color/canvas</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+        <item name="colorSurfaceContainerHigh">@color/surface</item>
+        <item name="colorSurfaceContainerHighest">@color/brand_tint</item>
+        <item name="colorOutlineVariant">@color/stroke</item>
+        <item name="android:statusBarColor">@color/brand</item>
+        <item name="android:fontFamily">@font/jakarta_regular</item>
+        <!-- Cegah fitur "paksa mode gelap" bawaan HP membalik -->
         <item name="android:forceDarkAllowed">false</item>
 
-        <!-- Gaya teks untuk layout bawaan simple_list_item_1 / simple_list_item_2 -->
+        <!-- Gaya teks untuk layout bawaan simple_list_item_1 / -->
         <item name="android:textAppearanceListItem">@style/AzenkivoListTitle</item>
         <item name="android:textAppearanceListItemSmall">@style/AzenkivoListTitle</item>
         <item name="android:textAppearanceListItemSecondary">@style/AzenkivoListSubtitle</item>
@@ -23,57 +36,81 @@
 
     <style name="Theme.AZENKIVO" parent="Base.Theme.AZENKIVO" />
 
+    <!-- Overlay Toolbar & menu titik tiga -->
+    <style name="ThemeOverlay.Azenkivo.Toolbar" parent="ThemeOverlay.Material3.Light">
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+        <item name="colorSurfaceContainerHigh">@color/surface</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorOnSurfaceVariant">@color/ink_secondary</item>
+        <item name="colorControlNormal">@color/ink</item>
+        <item name="actionOverflowMenuStyle">@style/Azenkivo.PopupOverflow</item>
+        <item name="textAppearanceLargePopupMenu">@style/Azenkivo.TextAppearance.Menu</item>
+        <item name="textAppearanceSmallPopupMenu">@style/Azenkivo.TextAppearance.Menu</item>
+    </style>
+
+    <style name="Azenkivo.PopupOverflow" parent="Widget.Material3.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/bg_popup_menu</item>
+        <item name="android:popupElevation">6dp</item>
+    </style>
+
+    <style name="Azenkivo.TextAppearance.Menu" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/jakarta_medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/ink</item>
+    </style>
+
     <!-- Theme khusus SplashScreen -->
     <style name="Theme.AZENKIVO.Splash" parent="Theme.AZENKIVO">
         <item name="android:windowFullscreen">false</item>
-        <item name="android:statusBarColor">@color/emergency_red</item>
-        <item name="android:navigationBarColor">@color/emergency_red_dark</item>
+        <item name="android:statusBarColor">@color/brand</item>
+        <item name="android:navigationBarColor">@color/brand</item>
         <!-- Hilangkan lapisan transparan sistem di area navigasi bawah -->
         <item name="android:enforceNavigationBarContrast">false</item>
 
-        <!-- Splash bawaan sistem Android 12+ (muncul sebelum SplashActivity):
-             latar merah + logo perisai, menggantikan ikon aplikasi (ambulans) -->
-        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/emergency_red</item>
+        <!-- Splash bawaan sistem Android 12 -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/brand</item>
         <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@drawable/splash_icon</item>
     </style>
 
-    <!-- Material3: "pill" di belakang ikon tab aktif dibuat putih (sama dengan latar),
-         sehingga yang terlihat hanya ikon & label merah seperti di Figma -->
+    <!-- Bottom nav Material 3 -->
     <style name="AzenkivoBottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/card_bg</item>
+        <item name="android:color">@color/nav_indicator</item>
+        <item name="android:width">64dp</item>
+        <item name="android:height">32dp</item>
     </style>
 
-    <!-- Label bottom nav: tebal saat aktif, biasa saat tidak -->
+    <!-- Label bottom nav: semibold saat aktif, medium saat tidak -->
     <style name="AzenkivoNavLabelActive" parent="TextAppearance.Material3.LabelMedium">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
         <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AzenkivoNavLabel" parent="TextAppearance.Material3.LabelMedium">
-        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/jakarta_medium</item>
         <item name="android:textSize">12sp</item>
     </style>
 
     <!-- Judul & subjudul Toolbar: Poppins tebal seperti header di desain -->
     <style name="AzenkivoToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/jakarta_bold</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="AzenkivoToolbarSubtitle" parent="TextAppearance.Material3.BodySmall">
-        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/jakarta_regular</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <!-- Teks baris ListView bawaan (judul & deskripsi) -->
+    <!-- Teks baris ListView bawaan -->
     <style name="AzenkivoListTitle" parent="TextAppearance.Material3.BodyLarge">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">15sp</item>
     </style>
 
     <style name="AzenkivoListSubtitle" parent="TextAppearance.Material3.BodyMedium">
-        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/jakarta_regular</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">12sp</item>
     </style>
