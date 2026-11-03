@@ -1,153 +1,185 @@
-# AZENKIVO — Sistem Keselamatan & Tanggap Darurat
+<div align="center">
 
-Aplikasi Android sisi **pengguna** untuk kesiapsiagaan dan tanggap darurat: akses cepat hotline nasional, tombol SOS, panduan SOP P3K & mitigasi bencana, serta simulasi pelacakan unit responder.
+<img src="docs/banner.svg" alt="AZENKIVO — Sistem Tanggap Darurat" width="100%">
 
-Dibuat untuk mata kuliah **Pemrograman Mobile (TI432228)** — Politeknik Caltex Riau.
+<br>
 
-> Sisi dispatch, responder, dan admin **disimulasikan dengan data dummy/lokal**. Aplikasi ini tidak memakai backend.
+![Kotlin](https://img.shields.io/badge/Kotlin-0F172A?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android_10+-0F172A?style=for-the-badge&logo=android&logoColor=white)
+![Material 3](https://img.shields.io/badge/Material_3-2563EB?style=for-the-badge&logo=materialdesign&logoColor=white)
+![ViewBinding](https://img.shields.io/badge/ViewBinding-2563EB?style=for-the-badge)
+![Glide](https://img.shields.io/badge/Glide_4.16-C4352B?style=for-the-badge)
 
----
+**Aplikasi Android untuk meminta bantuan darurat, memantau petugas yang datang, dan membaca panduan P3K.**
 
-## Alur Aplikasi
+Tugas mata kuliah **Pemrograman Mobile (TI432228)** · Politeknik Caltex Riau
 
-```
-SplashActivity ──(cek isLogin di SharedPreferences)──┬──> LoginActivity ──> BaseActivity
-                                                     └──> BaseActivity
+[Fitur](#-fitur) · [Alur](#-alur-aplikasi) · [Pemenuhan tugas](#-pemenuhan-tugas--modul) · [Design system](#-design-system-guardian-shield) · [Menjalankan](#-cara-menjalankan)
 
-BaseActivity (Bottom Navigation)
-├── Beranda   → HomeFragment
-├── Tracking  → TrackingFragment
-├── Panduan   → PanduanFragment ──(klik SOP)──> DetailActivity
-└── Keluar    → AlertDialog logout ──> LoginActivity
-```
-
-## Fitur
-
-### Splash Screen
-- Logo perisai, label *Edisi Siaga Indonesia*, dan hotline 112 • 119 • 113 • 115.
-- Menunggu 2 detik dengan `lifecycleScope` + `delay()`, lalu membaca `isLogin` dari SharedPreferences untuk menentukan tujuan (Login atau Beranda).
-
-### Login
-- Login mode demo: berhasil jika **ID Tim sama dengan kata sandi**.
-- Tombol lihat/sembunyikan kata sandi.
-- **Akses Cepat Tamu (Darurat)**: masuk tanpa akun dengan username `Tamu`.
-- *Lupa Sandi* dan *Daftar Relawan* menampilkan dialog informasi.
-- Status login dan username disimpan di SharedPreferences `user_pref` (key `isLogin`, `username`).
-
-### Beranda
-- Sapaan "Halo, *username*!" yang dibaca dari SharedPreferences.
-- Banner peringatan gempa → membuka halaman **Info BMKG** (WebView).
-- Tombol **SOS**: tekan & tahan → dialog konfirmasi → pindah ke tab Tracking.
-- 4 kartu hotline (112, 119, 113, 115) yang membuka aplikasi telepon dengan `Intent.ACTION_DIAL`.
-- *Semua (4)*: dialog daftar nomor darurat memakai `ArrayAdapter` + `simple_list_item_1`.
-- Banner SOP P3K → pindah ke tab Panduan.
-
-### Tracking (simulasi)
-- Status GPS, ETA, dan jarak unit terdekat.
-- Daftar unit responder memakai **ListView + Custom Adapter** (`ResponderAdapter`) dan **Glide** untuk foto petugas.
-- Klik unit → dialog detail dengan tombol hubungi.
-- Tombol *Hubungi Ambulans* (119) dan *Batal SOS*.
-
-### Panduan SOP
-- 8 SOP (CPR, pendarahan, luka bakar, tersedak, patah tulang, gempa, kebakaran, banjir) memakai **ListView + `SimpleAdapter` + `simple_list_item_2`** (judul + deskripsi).
-- Klik item → `DetailActivity`, data dikirim lewat `Intent.putExtra()`.
-
-### Detail SOP
-- Kartu utama, banner *Prinsip 3A*, 4 langkah penanganan, dan tombol *Panggil [nomor] Sekarang* sesuai jenis SOP.
-
-### Toolbar & Option Menu
-- Notifikasi (dialog), **Info BMKG** (WebView), dan Tentang Aplikasi.
-
-### Logout
-- Tab **Keluar** menampilkan `AlertDialog`. Jika "Ya": SharedPreferences dihapus dengan `clear()` lalu kembali ke Login dengan flag `NEW_TASK | CLEAR_TASK`.
+</div>
 
 ---
 
-## Materi Kuliah yang Diterapkan
+> [!NOTE]
+> Data petugas, peta, dan notifikasi adalah **simulasi lokal**. Aplikasi ini belum memakai backend.
 
-| Materi | Penerapan | File |
+## ✦ Fitur
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🛡️ Beranda
+- Sapaan **Halo, *username*** dari SharedPreferences
+- Kartu status kondisi sekitar → **Info BMKG** (WebView)
+- **Tombol SOS tahan 2 detik**: progress mengisi, getar, lalu konfirmasi. Lepas sebelum penuh = batal
+- Panggilan cepat **112 · 119 · 113 · 115** (`ACTION_DIAL`)
+- Kartu **Tentang AZENKIVO** → DetailActivity
+
+</td>
+<td width="50%" valign="top">
+
+### 📍 Tracking
+- Peta simulasi dengan rute petugas terdekat
+- Ringkasan waktu tiba, jarak, dan status **SOS aktif**
+- Daftar petugas: **ListView + Custom Adapter + Glide**
+- Tombol **Hubungi** di setiap kartu, **Hubungi Ambulans**, dan **Batal SOS**
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 📖 Panduan
+- 8 SOP P3K & bencana: CPR, pendarahan, luka bakar, tersedak, patah tulang, gempa, kebakaran, banjir
+- **ListView + SimpleAdapter**
+- Detail SOP dikirim lewat `putExtra`, ditampilkan sebagai **timeline langkah** + tombol panggil nomor yang sesuai
+
+</td>
+<td valign="top">
+
+### 👤 Profil
+- Identitas medis: golongan darah, kontak keluarga, catatan medis
+- Switch notifikasi siaga & **izin lokasi GPS** (mengikuti izin sistem)
+- Tombol **Keluar** → AlertDialog logout
+
+</td>
+</tr>
+</table>
+
+**Menu toolbar:** 🔦 senter · ✉️ kirim pesan darurat (WhatsApp/SMS) · 📞 telepon kontak keluarga
+
+**Login:** CardView, TextInputLayout, validasi kolom kosong, Toast hasil input, mode **Tamu** untuk keadaan darurat.
+
+## ✦ Alur aplikasi
+
+```mermaid
+flowchart LR
+    S([Splash<br/>delay 2 detik]) -->|isLogin = false| L[Login]
+    S -->|isLogin = true| M
+    L -->|username = sandi<br/>Toast + finish| M[MainActivity<br/>Bottom Navigation]
+    M --> B[Beranda]
+    M --> T[Tracking]
+    M --> P[Panduan]
+    M --> R[Profil]
+    B -->|Tentang AZENKIVO| D[DetailActivity]
+    B -->|tahan SOS| T
+    P -->|putExtra| SD[SopDetailActivity]
+    R -->|Keluar| A{AlertDialog}
+    A -->|Ya: hapus SharedPreferences| L
+    A -->|Tidak| R
+```
+
+## ✦ Pemenuhan tugas & modul
+
+| Syarat | Penerapan | File |
 |---|---|---|
-| Activity & Intent | Perpindahan halaman, `putExtra` ke Detail | `LoginActivity`, `PanduanFragment`, `DetailActivity` |
-| Intent implisit | Telepon darurat `ACTION_DIAL` | `HomeFragment`, `TrackingFragment`, `DetailActivity` |
-| ViewBinding | Semua Activity, Fragment, dan adapter | — |
-| AlertDialog | Login gagal, logout, SOS, notifikasi | `LoginActivity`, `BaseActivity`, `HomeFragment` |
-| SharedPreferences | Sesi login (`isLogin`, `username`) | `SplashActivity`, `LoginActivity`, `BaseActivity` |
-| Splash Screen | `lifecycleScope` + `delay()` | `SplashActivity` |
-| Fragment | Halaman Beranda, Tracking, Panduan | `Home/`, `Tracking/`, `Panduan/` |
-| Bottom Navigation | 4 menu + `replaceFragment()` | `BaseActivity`, `menu/bottom_nav_menu.xml` |
-| Toolbar & Option Menu | Notifikasi, Info BMKG, Tentang | `BaseActivity`, `menu/toolbar_menu.xml` |
-| ListView – `ArrayAdapter` | `simple_list_item_1` | `HomeFragment` (dialog *Semua*) |
-| ListView – `SimpleAdapter` | `simple_list_item_2` | `PanduanFragment` |
-| ListView – Custom Adapter | Model + layout item + `getView()` + Glide | `Tracking/ResponderModel`, `ResponderAdapter`, `item_responder.xml` |
-| WebView | Info BMKG | `WebViewActivity` |
-| CardView | Kartu hotline, SOP, unit responder | layout XML |
+| ViewBinding | Semua Activity & Fragment | `build.gradle.kts` (`viewBinding = true`) |
+| Login kreasi sendiri + Toast | Toast menampilkan username yang diketik | `LoginActivity.kt` |
+| CardView di Login | Form di dalam `androidx.cardview.widget.CardView` | `activity_login.xml` |
+| Intent Login → MainActivity | `startActivity(...)` lalu `finish()` | `LoginActivity.kt` |
+| Intent MainActivity → Detail | Kartu Tentang AZENKIVO di Beranda | `HomeFragment.kt` |
+| DetailActivity + gambar | Banner proyek, deskripsi, fitur, teknologi | `DetailActivity.kt`, `activity_detail.xml` |
+| AlertDialog Logout | Ya → Login · Tidak → tetap di halaman | `MainActivity.kt` (`showLogoutDialog`) |
+| **P5** Toolbar, Option Menu, WebView | Toolbar tiap tab, menu aksi darurat, Info BMKG | `MainActivity.kt`, `WebViewActivity.kt` |
+| **P6** SharedPreferences | `user_pref` → `isLogin`, `username` | `LoginActivity.kt`, `SplashActivity.kt` |
+| **P6** Splash Screen | `lifecycleScope` + `delay(2000)` + cek login | `SplashActivity.kt` |
+| **P7** Fragment + Bottom Navigation | `replaceFragment()` tanpa back stack | `MainActivity.kt`, `bottom_nav_menu.xml` |
+| **P7** ListView SimpleAdapter | 8 data SOP | `PanduanFragment.kt` |
+| **P7** Custom Adapter + Glide | Model, `getView()`, klik di adapter | `Tracking/ResponderAdapter.kt` |
 
----
+> [!TIP]
+> Di Modul P7, Bottom Navigation ada di `BaseActivity`. Di proyek ini perannya dipegang **MainActivity**, supaya alur tugas *Login → MainActivity* tetap terpenuhi.
 
-## Struktur Proyek
+## ✦ Design system: Guardian Shield
+
+<img src="docs/palette.svg" alt="Palet warna Guardian Shield" width="100%">
+
+| Prinsip | Keterangan |
+|---|---|
+| **Merah hanya untuk darurat** | Merah bata `#C4352B` dipakai di SOS, panggilan darurat, dan status SOS aktif saja |
+| **Navy untuk aksi utama** | Tombol, avatar, bulatan langkah, dan logo |
+| **Biru untuk petugas** | Tracking, ETA, dan tombol Hubungi |
+| **Tipografi** | Plus Jakarta Sans (400–700) dengan skala `Azenkivo.Type.*` |
+| **Aksesibilitas** | Target sentuh ≥ 48 dp, grid 8 dp, label TalkBack di tombol penting |
+
+## ✦ Struktur proyek
 
 ```
 app/src/main/java/com/example/azenkivo/
-├── SplashActivity.kt
-├── LoginActivity.kt
-├── BaseActivity.kt          # Bottom Navigation + Option Menu
-├── DetailActivity.kt        # Detail SOP
+├── SplashActivity.kt        # Splash + cek isLogin
+├── LoginActivity.kt         # CardView, validasi, Toast, SharedPreferences
+├── MainActivity.kt          # Bottom Navigation, toolbar, AlertDialog logout
+├── DetailActivity.kt        # Detail proyek
+├── SopDetailActivity.kt     # Detail SOP (timeline langkah)
 ├── WebViewActivity.kt       # Info BMKG
-├── Home/
-│   └── HomeFragment.kt
-├── Tracking/
-│   ├── TrackingFragment.kt
-│   ├── ResponderModel.kt
-│   └── ResponderAdapter.kt
-└── Panduan/
-    └── PanduanFragment.kt
+├── Home/HomeFragment.kt
+├── Tracking/                # TrackingFragment, ResponderModel, ResponderAdapter
+├── Panduan/PanduanFragment.kt
+├── Profile/ProfileFragment.kt
+└── ui/custom/ThinkingOrbView.kt   # Loading bola titik di splash
 
 app/src/main/res/
-├── layout/      # activity_*, fragment_*, item_responder, item_langkah
-├── menu/        # bottom_nav_menu, toolbar_menu
-├── values/      # colors, themes, styles (design system)
-├── drawable/    # ikon vector & background
-└── font/        # Poppins
+├── layout/      # activity_*, fragment_*, item_*
+├── values/      # colors, themes, styles (Guardian Shield)
+├── drawable/    # ikon vector, ilustrasi, latar
+└── font/        # Plus Jakarta Sans
 ```
 
----
+## ✦ Tech stack
 
-## Tech Stack
-
-| Komponen | Versi / Keterangan |
+| Komponen | Versi |
 |---|---|
 | Bahasa | Kotlin |
-| Min SDK / Target SDK | 29 (Android 10) / 37 |
-| Build | Gradle Kotlin DSL + version catalog (`libs.versions.toml`), AGP 9.3.2 |
-| UI | XML Layout + ViewBinding, Material Components 1.14.0 (tema Material3), ConstraintLayout 2.2.2, CardView 1.0.0 |
-| Lifecycle | `lifecycle-runtime-ktx` 2.9.4 (`lifecycleScope`) |
+| SDK | min 29 (Android 10) · target 37 |
+| Build | Gradle Kotlin DSL + version catalog, AGP 9.3.2 |
+| UI | XML + ViewBinding, Material Components 1.14.0 (Material 3), ConstraintLayout 2.2.2, CardView 1.0.0 |
+| Lifecycle | lifecycle-runtime-ktx 2.9.4 |
 | Gambar | Glide 4.16.0 |
-| Font | Poppins |
 
-**Permission:** `INTERNET` (Glide dan WebView).
+**Izin:** `INTERNET` (Glide & WebView), `ACCESS_FINE_LOCATION` / `ACCESS_COARSE_LOCATION` (dikelola dari Profil).
 
----
+## ✦ Cara menjalankan
 
-## Cara Menjalankan
+```bash
+git clone https://github.com/refflabs/AZENKIVO.git
+```
 
-1. Clone repo:
-   ```bash
-   git clone https://github.com/refflabs/AZENKIVO.git
-   ```
-2. Buka folder proyek di Android Studio, lalu klik **Sync Now**.
-3. Jalankan di emulator atau HP (Android 10 ke atas). Koneksi internet dibutuhkan untuk foto unit responder dan Info BMKG.
-4. Login demo: isi **ID Tim dan kata sandi dengan teks yang sama** (contoh `tim1` / `tim1`), atau pilih **Akses Cepat Tamu**.
+1. Buka folder proyek di Android Studio, lalu **Sync Now**.
+2. Jalankan di emulator atau HP Android 10 ke atas. Internet dibutuhkan untuk foto petugas dan Info BMKG.
+3. **Login demo:** isi username dan sandi dengan teks yang sama, misalnya `tim1` / `tim1`. Atau pilih **Masuk sebagai Tamu**.
 
----
+## ✦ Rencana pengembangan
 
-## Rencana Pengembangan
-
-- [ ] SOS aktif hanya jika ditahan minimal 2 detik
-- [ ] Simpan insiden & laporan akhir ke **Room**
-- [ ] Peta live tracking (Maps SDK)
+- [ ] Simpan riwayat SOS ke **Room**
+- [ ] Peta live tracking dengan **Maps SDK**
 - [ ] Data gempa terkini dari BMKG dengan **Retrofit**
 - [ ] Notifikasi peringatan darurat
 
 ---
 
-Dibuat oleh **Reffael** — 3 TI, Politeknik Caltex Riau.
+<div align="center">
+
+Dibuat oleh **Reffael Evindonta Pardede** · 3 TI · Politeknik Caltex Riau
+
+</div>

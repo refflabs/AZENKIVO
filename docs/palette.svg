@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="200" viewBox="0 0 960 200" role="img" aria-label="Palet warna Guardian Shield">
+  <rect width="960" height="200" rx="20" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <g font-family="'Segoe UI',Helvetica,Arial,sans-serif">
+    <g transform="translate(24 24)"><rect width="168" height="96" rx="14" fill="#0F172A"/><text x="0" y="124" font-size="15" font-weight="700" fill="#0F172A">Brand · Navy</text><text x="0" y="146" font-size="13" fill="#64748B">#0F172A</text></g>
+    <g transform="translate(210 24)"><rect width="168" height="96" rx="14" fill="#2563EB"/><text x="0" y="124" font-size="15" font-weight="700" fill="#0F172A">Aksen · Biru</text><text x="0" y="146" font-size="13" fill="#64748B">#2563EB · tracking</text></g>
+    <g transform="translate(396 24)"><rect width="168" height="96" rx="14" fill="#C4352B"/><text x="0" y="124" font-size="15" font-weight="700" fill="#0F172A">Darurat · Bata</text><text x="0" y="146" font-size="13" fill="#64748B">#C4352B · SOS saja</text></g>
+    <g transform="translate(582 24)"><rect width="168" height="96" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/><rect x="12" y="12" width="144" height="72" rx="8" fill="#F8FAFC"/><text x="0" y="124" font-size="15" font-weight="700" fill="#0F172A">Canvas · Slate</text><text x="0" y="146" font-size="13" fill="#64748B">#F8FAFC / #FFFFFF</text></g>
+    <g transform="translate(768 24)"><rect width="168" height="96" rx="14" fill="#64748B"/><text x="0" y="124" font-size="15" font-weight="700" fill="#0F172A">Teks sekunder</text><text x="0" y="146" font-size="13" fill="#64748B">#64748B</text></g>
+  </g>
+</svg>
