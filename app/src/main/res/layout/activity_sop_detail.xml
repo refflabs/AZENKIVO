@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Detail SOP AZENKIVO -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/canvas"
+    tools:context=".SopDetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@color/canvas"
+        android:theme="@style/ThemeOverlay.Azenkivo.Toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.Azenkivo.Toolbar"
+        app:titleTextAppearance="@style/AzenkivoToolbarTitle"
+        app:titleTextColor="@color/ink"
+        tools:title="Detail SOP" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp">
+
+            <!-- Header gambar / ilustrasi: centerCrop menjaga rasio -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgHeader"
+                android:layout_width="match_parent"
+                android:layout_height="192dp"
+                android:background="@color/brand_tint"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/Azenkivo.Shape.Rounded16"
+                tools:src="@drawable/img_first_aid" />
+
+            <!-- Kategori -->
+            <TextView
+                android:id="@+id/tvKategori"
+                style="@style/Azenkivo.Type.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/accent_strong"
+                tools:text="Pertolongan Pertama (P3K)" />
+
+            <TextView
+                android:id="@+id/tvJudul"
+                style="@style/Azenkivo.Type.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:accessibilityHeading="true"
+                android:lineSpacingMultiplier="1.1"
+                android:textSize="26sp"
+                tools:text="Resusitasi Jantung Paru (CPR)" />
+
+            <TextView
+                android:id="@+id/tvDeskripsi"
+                style="@style/Azenkivo.Type.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:text="Penanganan henti napas &amp; henti jantung" />
+
+            <!-- Badge kunci SOP -->
+            <TextView
+                android:id="@+id/tvBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_badge_brand"
+                android:fontFamily="@font/jakarta_bold"
+                android:letterSpacing="0.06"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/brand"
+                android:textSize="13sp"
+                tools:text="GOLDEN RATIO 30:2" />
+
+            <!-- Callout Prinsip 3A -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_callout_warning"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_warning_mark"
+                    app:tint="@color/status_patrol" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jakarta_bold"
+                        android:text="@string/det_principle_title"
+                        android:textColor="@color/ink"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/Azenkivo.Type.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/det_principle_body" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/Azenkivo.Type.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:accessibilityHeading="true"
+                android:text="@string/det_steps_title"
+                android:textSize="18sp" />
+
+            <!-- Timeline 4 langkah memakai layout item_langkah.xml yang sama -->
+            <include
+                android:id="@+id/step1"
+                layout="@layout/item_langkah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <include
+                android:id="@+id/step2"
+                layout="@layout/item_langkah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/step3"
+                layout="@layout/item_langkah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/step4"
+                layout="@layout/item_langkah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bar aksi darurat -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/surface"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/stroke" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPanggil"
+            style="@style/Azenkivo.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:backgroundTint="@color/danger"
+            app:icon="@drawable/ic_call"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconSize="20dp"
+            app:iconTint="@color/white"
+            app:rippleColor="@color/danger_strong"
+            tools:text="Panggil 119 sekarang" />
+
+        <TextView
+            android:id="@+id/tvCallCaption"
+            style="@style/Azenkivo.Type.BodySmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:text="@string/det_call_caption"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

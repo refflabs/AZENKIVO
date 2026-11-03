@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Peta simulasi Tracking: blok kota slate, jalan putih -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="280dp"
+    android:viewportWidth="360"
+    android:viewportHeight="280">
+
+    <!-- Latar -->
+    <path
+        android:fillColor="@color/map_bg"
+        android:pathData="M0,0h360v280h-360z" />
+
+    <!-- Blok bangunan -->
+    <path
+        android:fillColor="@color/map_block"
+        android:pathData="M12,12h96v100h-96z M132,12h56v100h-56z M212,12h52v100h-52z M287,12h61v100h-61z M12,137h96v36h-96z M132,137h56v36h-56z M212,137h52v36h-52z M287,137h61v36h-61z M12,197h96v71h-96z M132,197h56v71h-56z M212,197h52v71h-52z M287,197h61v71h-61z" />
+
+    <!-- Jalan -->
+    <path
+        android:pathData="M0,125H360 M0,185H360 M120,0V280 M200,0V280 M275,0V280"
+        android:strokeWidth="14"
+        android:strokeColor="@color/white" />
+    <path
+        android:pathData="M0,262L360,96"
+        android:strokeWidth="9"
+        android:strokeAlpha="0.85"
+        android:strokeColor="@color/white" />
+
+    <!-- Rute unit -> Anda -->
+    <path
+        android:pathData="M275,125V185H120"
+        android:strokeWidth="5"
+        android:strokeColor="@color/accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Penanda unit responder + halo -->
+    <path
+        android:fillAlpha="0.2"
+        android:fillColor="@color/accent"
+        android:pathData="M275,125m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0" />
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M275,125m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        android:strokeWidth="3"
+        android:strokeColor="@color/white" />
+
+    <!-- Penanda posisi Anda + halo -->
+    <path
+        android:fillAlpha="0.14"
+        android:fillColor="@color/brand"
+        android:pathData="M120,185m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0" />
+    <path
+        android:fillColor="@color/brand"
+        android:pathData="M120,185m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        android:strokeWidth="3"
+        android:strokeColor="@color/white" />
+</vector>

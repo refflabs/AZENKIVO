@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Style komponen AZENKIVO dikumpulkan di satu tempat supaya ukuran, font, dan warna
-     konsisten di semua layar. Cukup ubah di sini, semua layout ikut berubah. -->
+<!-- Style komponen AZENKIVO dikumpulkan di satu tempat supaya -->
 <resources>
 
-    <!-- Induk kosong untuk penamaan bertitik (Azenkivo.Card, Azenkivo.Text.Link, dst) -->
+    <!-- Induk kosong untuk penamaan bertitik -->
     <style name="Azenkivo" />
     <style name="Azenkivo.Text" />
 
-    <!-- ===== Kartu putih bergaris tipis (design system) ===== -->
+    <!-- Kartu putih bergaris tipis -->
     <style name="Azenkivo.Card">
         <item name="cardBackgroundColor">@color/card_bg</item>
         <item name="cardCornerRadius">16dp</item>
@@ -29,7 +28,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <!-- ===== Ikon dalam lingkaran ===== -->
+    <!-- Ikon dalam lingkaran -->
     <style name="Azenkivo.IconCircle">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
@@ -49,17 +48,17 @@
         <item name="android:importantForAccessibility">no</item>
     </style>
 
-    <!-- ===== Teks ===== -->
-    <!-- Judul bagian, mis. "Panggilan Cepat Terpadu" -->
+    <!-- Teks -->
+    <!-- Judul bagian, mis -->
     <style name="Azenkivo.Text.SectionTitle">
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/jakarta_bold</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <!-- Nomor hotline besar -->
     <style name="Azenkivo.Text.HotlineNumber">
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/jakarta_bold</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">22sp</item>
         <item name="android:includeFontPadding">false</item>
@@ -67,24 +66,24 @@
 
     <!-- Label kecil di bawah nomor -->
     <style name="Azenkivo.Text.Caption">
-        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/jakarta_regular</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">11sp</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
 
-    <!-- Label huruf kapital kecil dengan jarak huruf, mis. "TEKAN & TAHAN ..." -->
+    <!-- Label huruf kapital kecil dengan jarak huruf, mis -->
     <style name="Azenkivo.Text.Overline">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">11sp</item>
         <item name="android:letterSpacing">0.08</item>
     </style>
 
-    <!-- Teks yang bisa diklik (link). minHeight 48dp = area sentuh minimal Android -->
+    <!-- Teks yang bisa diklik -->
     <style name="Azenkivo.Text.Link">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
         <item name="android:textColor">@color/safety_blue</item>
         <item name="android:textSize">13sp</item>
         <item name="android:minHeight">48dp</item>
@@ -96,15 +95,167 @@
 
     <!-- Banner peringatan oranye: judul & isi -->
     <style name="Azenkivo.Text.WarningTitle">
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/jakarta_bold</item>
         <item name="android:textColor">@color/safety_orange</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="Azenkivo.Text.WarningBody">
-        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/jakarta_regular</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Skala tipografi Plus Jakarta Sans -->
+    <style name="Azenkivo.Type" />
+
+    <!-- Judul halaman, mis -->
+    <style name="Azenkivo.Type.Headline">
+        <item name="android:fontFamily">@font/jakarta_bold</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Judul bagian / nama brand -->
+    <style name="Azenkivo.Type.Title">
+        <item name="android:fontFamily">@font/jakarta_bold</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Paragraf utama -->
+    <style name="Azenkivo.Type.Body">
+        <item name="android:fontFamily">@font/jakarta_regular</item>
+        <item name="android:textColor">@color/ink_secondary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <!-- Teks kecil pendukung -->
+    <style name="Azenkivo.Type.BodySmall">
+        <item name="android:fontFamily">@font/jakarta_regular</item>
+        <item name="android:textColor">@color/ink_secondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Label tombol / tautan -->
+    <style name="Azenkivo.Type.Label">
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Overline kecil berhuruf kapital, mis -->
+    <style name="Azenkivo.Type.Overline">
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
+        <item name="android:textColor">@color/ink_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Teks di dalam kolom input -->
+    <style name="Azenkivo.Type.Input">
+        <item name="android:fontFamily">@font/jakarta_medium</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- TextAppearance untuk hint / helper / error TextInputLayout -->
+    <style name="Azenkivo.TextAppearance.Field" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/jakarta_regular</item>
+    </style>
+
+    <style name="Azenkivo.TextAppearance.FieldSupport" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/jakarta_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Kolom input Guardian Shield -->
+    <style name="Azenkivo.TextField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/surface</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/input_stroke</item>
+        <item name="boxStrokeErrorColor">@color/danger_strong</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/brand</item>
+        <item name="hintTextAppearance">@style/Azenkivo.TextAppearance.Field</item>
+        <item name="helperTextTextColor">@color/ink_secondary</item>
+        <item name="helperTextTextAppearance">@style/Azenkivo.TextAppearance.FieldSupport</item>
+        <item name="errorTextColor">@color/danger_strong</item>
+        <item name="errorTextAppearance">@style/Azenkivo.TextAppearance.FieldSupport</item>
+        <item name="startIconTint">@color/ink_secondary</item>
+        <item name="endIconTint">@color/ink_secondary</item>
+    </style>
+
+    <!-- Tombol -->
+    <!-- Utama: navy solid, sudut 12dp, tinggi 56dp -->
+    <style name="Azenkivo.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:layout_height">56dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:fontFamily">@font/jakarta_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/brand</item>
+        <item name="rippleColor">@color/brand_pressed</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <!-- Sekunder: outlined putih bergaris halus -->
+    <style name="Azenkivo.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_height">56dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="backgroundTint">@color/surface</item>
+        <item name="rippleColor">@color/brand_tint</item>
+        <item name="strokeColor">@color/stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="iconTint">@color/ink</item>
+    </style>
+
+    <!-- Tautan teks: navy semibold, tinggi sentuh 48dp -->
+    <style name="Azenkivo.Button.Link" parent="Widget.Material3.Button.TextButton">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:fontFamily">@font/jakarta_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brand</item>
+        <item name="rippleColor">@color/brand_tint</item>
+    </style>
+
+    <!-- Bentuk lingkaran penuh untuk ShapeableImageView -->
+    <style name="Azenkivo.Shape.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Sudut 16dp untuk ShapeableImageView -->
+    <style name="Azenkivo.Shape.Rounded16" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Sudut 12dp untuk ShapeableImageView -->
+    <style name="Azenkivo.Shape.Rounded12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
     </style>
 
 </resources>

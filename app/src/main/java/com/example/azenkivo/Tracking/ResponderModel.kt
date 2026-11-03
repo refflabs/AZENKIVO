@@ -1,6 +1,6 @@
 package com.example.azenkivo.Tracking
 
-// Wadah data satu unit responder (seperti MessageModel di Modul P7 langkah 4.2)
+// Wadah data satu unit responder
 data class ResponderModel(
     val namaUnit: String,
     val instansi: String,

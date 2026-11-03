@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Home AZENKIVO -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light"
+    android:background="@color/canvas"
     tools:context=".Home.HomeFragment">
 
-    <!-- Toolbar merah berisi sapaan (header desain). Ikon lonceng berasal dari Option Menu -->
+    <!-- Toolbar datar: avatar inisial + sapaan -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_header_red"
-        android:minHeight="?attr/actionBarSize"
-        android:paddingTop="10dp"
-        android:paddingBottom="22dp"
-        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-        app:contentInsetStart="20dp"
+        android:background="@color/canvas"
+        android:minHeight="64dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:theme="@style/ThemeOverlay.Azenkivo.Toolbar"
+        app:contentInsetStart="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.Material3.Light">
+        app:popupTheme="@style/ThemeOverlay.Azenkivo.Toolbar">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,19 +30,18 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- Ikon perisai dalam lingkaran -->
-            <FrameLayout
-                style="@style/Azenkivo.IconCircle"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:backgroundTint="@color/emergency_red_dark">
-
-                <ImageView
-                    style="@style/Azenkivo.IconInCircle"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_shield" />
-            </FrameLayout>
+            <TextView
+                android:id="@+id/tvAvatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_avatar"
+                android:fontFamily="@font/jakarta_bold"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="T" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,23 +51,22 @@
 
                 <TextView
                     android:id="@+id/tvGreeting"
+                    style="@style/Azenkivo.Type.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
-                    android:includeFontPadding="false"
-                    android:text="Halo, Tim Siaga!"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:accessibilityHeading="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    tools:text="Halo, Tim Siaga" />
 
                 <TextView
                     android:id="@+id/tvStatus"
+                    style="@style/Azenkivo.Type.BodySmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Status: Siaga Bencana 24/7"
-                    android:textColor="@color/emergency_red_light"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="4dp"
+                    android:text="@string/home_status_default"
+                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -76,7 +75,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,361 +84,634 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
 
-            <!-- Banner peringatan gempa (klik -> Info BMKG) -->
+            <!-- Kartu status utama: navy solid, klik -> Info BMKG -->
             <LinearLayout
                 android:id="@+id/bannerGempa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_banner_warning"
+                android:background="@drawable/bg_status_card"
                 android:clickable="true"
+                android:contentDescription="@string/home_area_desc"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="14dp">
-
-                <FrameLayout
-                    style="@style/Azenkivo.IconCircle"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:backgroundTint="@color/safety_orange">
-
-                    <ImageView
-                        style="@style/Azenkivo.IconInCircle"
-                        android:src="@drawable/ic_warning_mark" />
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/Azenkivo.Text.WarningTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Peringatan Gempa M 5.2" />
-
-                    <TextView
-                        style="@style/Azenkivo.Text.WarningBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Terdeteksi 12 km barat laut • Tetap tenang" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Tombol SOS (ripple saat ditekan) -->
-            <TextView
-                android:id="@+id/btnSos"
-                android:layout_width="196dp"
-                android:layout_height="196dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/bg_sos_button"
-                android:clickable="true"
-                android:contentDescription="Tombol SOS, tekan dan tahan untuk mengirim sinyal darurat"
-                android:focusable="true"
-                android:fontFamily="@font/poppins_bold"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:letterSpacing="0.04"
-                android:text="SOS"
-                android:textColor="@color/white"
-                android:textSize="44sp" />
-
-            <TextView
-                style="@style/Azenkivo.Text.Overline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
-                android:text="TEKAN &amp; TAHAN UNTUK DARURAT" />
-
-            <!-- Judul bagian hotline -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/Azenkivo.Text.SectionTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Panggilan Cepat Terpadu" />
-
-                <TextView
-                    android:id="@+id/tvSemuaHotline"
-                    style="@style/Azenkivo.Text.Link"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="-8dp"
-                    android:text="Semua (4)" />
-            </LinearLayout>
-
-            <!-- Baris 1: 112 dan 119 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card112"
-                    style="@style/Azenkivo.Card.Clickable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        style="@style/Azenkivo.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <FrameLayout
-                            style="@style/Azenkivo.IconCircle"
-                            android:backgroundTint="@color/emergency_red_light">
-
-                            <ImageView
-                                style="@style/Azenkivo.IconInCircle"
-                                android:src="@drawable/ic_plus"
-                                app:tint="@color/emergency_red" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Azenkivo.Text.HotlineNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="112" />
-
-                            <TextView
-                                style="@style/Azenkivo.Text.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Panggilan Umum" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card119"
-                    style="@style/Azenkivo.Card.Clickable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        style="@style/Azenkivo.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <FrameLayout
-                            style="@style/Azenkivo.IconCircle"
-                            android:backgroundTint="@color/safety_blue_light">
-
-                            <ImageView
-                                style="@style/Azenkivo.IconInCircle"
-                                android:src="@drawable/ic_plus"
-                                app:tint="@color/safety_blue" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Azenkivo.Text.HotlineNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="119" />
-
-                            <TextView
-                                style="@style/Azenkivo.Text.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Ambulans Medis" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <!-- Baris 2: 113 dan 115 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card113"
-                    style="@style/Azenkivo.Card.Clickable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        style="@style/Azenkivo.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <FrameLayout
-                            style="@style/Azenkivo.IconCircle"
-                            android:backgroundTint="@color/safety_orange_light">
-
-                            <ImageView
-                                style="@style/Azenkivo.IconInCircle"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_dot"
-                                app:tint="@color/safety_orange" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Azenkivo.Text.HotlineNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="113" />
-
-                            <TextView
-                                style="@style/Azenkivo.Text.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Damkar / Rescue" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card115"
-                    style="@style/Azenkivo.Card.Clickable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        style="@style/Azenkivo.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <FrameLayout
-                            style="@style/Azenkivo.IconCircle"
-                            android:backgroundTint="@color/safety_green_light">
-
-                            <ImageView
-                                style="@style/Azenkivo.IconInCircle"
-                                android:src="@drawable/ic_ring"
-                                app:tint="@color/safety_green" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Azenkivo.Text.HotlineNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="115" />
-
-                            <TextView
-                                style="@style/Azenkivo.Text.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Basarnas SAR" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <!-- Banner SOP P3K (klik "Buka SOP" -> tab Panduan) -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardBannerSop"
-                style="@style/Azenkivo.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/text_primary">
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:importantForAccessibility="noHideDescendants"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Azenkivo.Type.Overline"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/home_area_label"
+                        android:textColor="@color/on_navy_secondary" />
+
+                    <!-- Badge status: titik hijau + "Aman" -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_status_badge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp">
+
+                        <ImageView
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:src="@drawable/ic_dot"
+                            app:tint="@color/status_safe" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/jakarta_semibold"
+                            android:text="@string/home_area_badge"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/Azenkivo.Type.Headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:importantForAccessibility="no"
+                    android:text="@string/home_area_title"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <!-- Garis pemisah tipis putih 12% -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#1FFFFFFF" />
+
+                <!-- Peringatan aktif + aksi -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:importantForAccessibility="noHideDescendants"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_warning_mark"
+                        app:tint="@color/status_warning" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/jakarta_medium"
+                        android:maxLines="2"
+                        android:text="@string/home_area_alert"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/jakarta_semibold"
+                        android:text="@string/home_area_action"
+                        android:textColor="@color/on_navy_secondary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/on_navy_secondary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tombol SOS: tahan 2 detik, isi merah tua bergerak dari kiri -->
+            <FrameLayout
+                android:id="@+id/btnSos"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_sos_button"
+                android:clickable="true"
+                android:contentDescription="@string/home_sos_desc"
+                android:focusable="true"
+                android:hapticFeedbackEnabled="true"
+                android:longClickable="true">
+
+                <!-- Isi progress (scaleX 0 -> 1) -->
+                <View
+                    android:id="@+id/sosFill"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/danger_strong"
+                    android:importantForAccessibility="no"
+                    android:scaleX="0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:importantForAccessibility="noHideDescendants"
                     android:orientation="horizontal"
-                    android:padding="18dp">
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_sos_icon"
+                        android:fontFamily="@font/jakarta_bold"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.06"
+                        android:text="@string/home_sos"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvSosTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Panduan Mitigasi &amp; SOP P3K"
+                            android:fontFamily="@font/jakarta_bold"
+                            android:includeFontPadding="false"
+                            android:text="@string/home_sos_title"
                             android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tvSosHint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.85"
+                            android:fontFamily="@font/jakarta_medium"
+                            android:text="@string/home_sos_caption"
+                            android:textColor="@color/white"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView
+                style="@style/Azenkivo.Type.BodySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:text="@string/home_sos_note" />
+
+            <!-- Panggilan cepat: satu grup daftar, bukan 4 kartu kembar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Azenkivo.Type.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:accessibilityHeading="true"
+                    android:text="@string/home_hotline_title"
+                    android:textSize="17sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tvSemuaHotline"
+                    style="@style/Azenkivo.Button.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="-8dp"
+                    android:text="@string/home_hotline_all" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 112 -->
+                    <LinearLayout
+                        android:id="@+id/card112"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:contentDescription="@string/home_112_label"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_shield"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:importantForAccessibility="noHideDescendants"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="112" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/home_112_label"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_call"
+                            app:tint="@color/accent" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+
+                    <!-- 119 -->
+                    <LinearLayout
+                        android:id="@+id/card119"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:contentDescription="@string/home_119_label"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_plus"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:importantForAccessibility="noHideDescendants"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="119" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/home_119_label"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_call"
+                            app:tint="@color/accent" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+
+                    <!-- 113 -->
+                    <LinearLayout
+                        android:id="@+id/card113"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:contentDescription="@string/home_113_label"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_warning_mark"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:importantForAccessibility="noHideDescendants"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="113" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/home_113_label"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_call"
+                            app:tint="@color/accent" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="72dp"
+                        android:background="@color/stroke" />
+
+                    <!-- 115 -->
+                    <LinearLayout
+                        android:id="@+id/card115"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:contentDescription="@string/home_115_label"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_icon_tile">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_ring"
+                                app:tint="@color/brand" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:importantForAccessibility="noHideDescendants"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Azenkivo.Type.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="115" />
+
+                            <TextView
+                                style="@style/Azenkivo.Type.BodySmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/home_115_label"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_call"
+                            app:tint="@color/accent" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Panduan SOP: baris info bertint biru -->
+            <LinearLayout
+                android:id="@+id/cardBannerSop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_tint_accent"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="72dp"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp">
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_icon_tile"
+                    android:backgroundTint="@color/surface">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_panduan"
+                        app:tint="@color/accent" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Azenkivo.Type.Label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_sop_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        style="@style/Azenkivo.Type.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/home_sop_body"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBukaSop"
+                    style="@style/Azenkivo.Button.Link"
+                    android:layout_width="wrap_content"
+                    android:text="@string/home_sop_action"
+                    android:textColor="@color/accent_strong"
+                    app:icon="@drawable/ic_chevron_right"
+                    app:iconGravity="end"
+                    app:iconPadding="0dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@color/accent_strong"
+                    app:rippleColor="@color/accent_tint" />
+            </LinearLayout>
+
+            <!-- Detail proyek: Intent ke DetailActivity -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/btnToDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_group_surface"
+                    android:clickable="true"
+                    android:contentDescription="@string/home_project_desc"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="72dp"
+                    android:orientation="horizontal"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- Thumbnail banner proyek -->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:importantForAccessibility="no"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ill_project_banner"
+                        app:shapeAppearanceOverlay="@style/Azenkivo.Shape.Rounded12" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:importantForAccessibility="noHideDescendants"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Azenkivo.Type.Label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_project_title"
                             android:textSize="15sp" />
 
                         <TextView
+                            style="@style/Azenkivo.Type.BodySmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Penanganan henti napas, luka bakar &amp; gempa"
-                            android:textColor="@color/text_hint"
-                            android:textSize="11sp" />
+                            android:layout_marginTop="4dp"
+                            android:text="@string/home_project_body"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnBukaSop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="12dp"
-                        android:background="@drawable/bg_pill_red"
-                        android:fontFamily="@font/poppins_bold"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
-                        android:paddingHorizontal="16dp"
-                        android:text="Buka SOP"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="@color/ink_secondary" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
     </ScrollView>

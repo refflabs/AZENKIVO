@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Ikon untuk splash bawaan sistem (Android 12+).
-     Sistem menampilkan ikon di kotak 240dp dan hanya lingkaran tengah 160dp yang terlihat,
-     jadi perisai diletakkan kecil di tengah lapisan transparan 240dp supaya tidak terpotong. -->
+<!-- Ikon splash bawaan sistem -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:width="240dp"

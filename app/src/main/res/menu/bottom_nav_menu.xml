@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Bottom nav. "Keluar" dipindah ke halaman Profil -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/beranda"
@@ -13,7 +14,7 @@
         android:icon="@drawable/ic_panduan"
         android:title="Panduan" />
     <item
-        android:id="@+id/keluar"
-        android:icon="@drawable/ic_keluar"
-        android:title="Keluar" />
+        android:id="@+id/profil"
+        android:icon="@drawable/ic_profil"
+        android:title="Profil" />
 </menu>

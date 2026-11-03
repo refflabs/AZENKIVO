@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Cincin / lingkaran bergaris (hotline 115). Warna diatur lewat app:tint -->
+<!-- Cincin / lingkaran bergaris -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <stroke

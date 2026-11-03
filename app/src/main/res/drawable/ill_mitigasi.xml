@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ilustrasi header Detail untuk kategori Mitigasi Bencana -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="200dp"
+    android:viewportWidth="360"
+    android:viewportHeight="200">
+
+    <!-- Latar -->
+    <path
+        android:fillColor="@color/accent_tint"
+        android:pathData="M0,0h360v200h-360z" />
+
+    <!-- Lingkaran lembut di belakang -->
+    <path
+        android:fillColor="#DBEAFE"
+        android:pathData="M180,96m-78,0a78,78 0,1 1,156 0a78,78 0,1 1,-156 0" />
+
+    <!-- Tanah -->
+    <path
+        android:fillColor="#BFDBFE"
+        android:pathData="M0,160h360v40h-360z" />
+
+    <!-- Gelombang / guncangan -->
+    <path
+        android:pathData="M40,176c12,-8 24,8 36,0s24,8 36,0 M248,176c12,-8 24,8 36,0s24,8 36,0"
+        android:strokeWidth="4"
+        android:strokeColor="@color/accent"
+        android:strokeLineCap="round" />
+
+    <!-- Rumah -->
+    <path
+        android:fillColor="@color/surface"
+        android:pathData="M132,160V100l48,-38 48,38v60z" />
+    <path
+        android:pathData="M120,108l60,-48 60,48"
+        android:strokeWidth="8"
+        android:strokeColor="@color/brand"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/brand_tint"
+        android:pathData="M164,160v-34h32v34z" />
+
+    <!-- Perisai -->
+    <path
+        android:fillColor="@color/brand"
+        android:pathData="M180,96l-18,7v11c0,11 8,20 18,23 10,-3 18,-12 18,-23v-11z" />
+    <path
+        android:pathData="M172,116l6,6 11,-12"
+        android:strokeWidth="3.5"
+        android:strokeColor="@color/white"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

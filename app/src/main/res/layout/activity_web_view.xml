@@ -8,22 +8,31 @@
     android:background="@color/white"
     tools:context=".WebViewActivity">
 
-    <!-- Tinggi wrap_content: di kode diberi padding setinggi status bar -->
+    <!-- Toolbar datar Guardian Shield -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:background="@color/emergency_red"
-        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        android:background="@color/canvas"
+        android:theme="@style/ThemeOverlay.Azenkivo.Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.Material3.Light"
+        app:popupTheme="@style/ThemeOverlay.Azenkivo.Toolbar"
         app:subtitleTextAppearance="@style/AzenkivoToolbarSubtitle"
         app:titleTextAppearance="@style/AzenkivoToolbarTitle"
-        app:subtitleTextColor="@color/emergency_red_light"
-        app:titleTextColor="@color/white" />
+        app:subtitleTextColor="@color/ink_secondary"
+        app:titleTextColor="@color/ink" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <WebView
         android:id="@+id/webView"
@@ -33,6 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

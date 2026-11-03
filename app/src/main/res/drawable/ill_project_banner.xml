@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Banner proyek AZENKIVO: navy, jaringan jalan halus -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="200dp"
+    android:viewportWidth="360"
+    android:viewportHeight="200">
+
+    <!-- Latar navy -->
+    <path
+        android:fillColor="@color/brand"
+        android:pathData="M0,0h360v200h-360z" />
+
+    <!-- Jaringan jalan -->
+    <path
+        android:pathData="M0,48H360 M0,150H360 M64,0V200 M296,0V200 M0,196L140,0 M220,200L360,20"
+        android:strokeAlpha="0.07"
+        android:strokeColor="@color/white"
+        android:strokeWidth="10" />
+
+    <!-- Lingkaran radar di belakang perisai -->
+    <path
+        android:pathData="M180,100m-74,0a74,74 0,1 1,148 0a74,74 0,1 1,-148 0"
+        android:strokeAlpha="0.12"
+        android:strokeColor="@color/white"
+        android:strokeWidth="1.5" />
+    <path
+        android:pathData="M180,100m-52,0a52,52 0,1 1,104 0a52,52 0,1 1,-104 0"
+        android:strokeAlpha="0.18"
+        android:strokeColor="@color/white"
+        android:strokeWidth="1.5" />
+
+    <!-- Rute responder dari kiri bawah & kanan atas -->
+    <path
+        android:pathData="M64,150H128L150,124 M296,48H246L214,78"
+        android:strokeColor="@color/accent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="4" />
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M64,150m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0 M296,48m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+        android:strokeColor="@color/white"
+        android:strokeWidth="2.5" />
+
+    <!-- Perisai AZENKIVO -->
+    <group
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:translateX="150"
+        android:translateY="64">
+        <path
+            android:fillAlpha="0.24"
+            android:fillColor="@color/white"
+            android:pathData="M50,2 L94,18 L94,54 C94,84 75,106 50,118 C25,106 6,84 6,54 L6,18 Z" />
+        <path
+            android:fillColor="@color/white"
+            android:pathData="M50,13 L84,25.5 L84,54 C84,78 69.5,96 50,106 C30.5,96 16,78 16,54 L16,25.5 Z" />
+        <path
+            android:fillColor="@color/danger"
+            android:pathData="M43,40 L57,40 L57,51 L68,51 L68,65 L57,65 L57,76 L43,76 L43,65 L32,65 L32,51 L43,51 Z" />
+    </group>
+</vector>
