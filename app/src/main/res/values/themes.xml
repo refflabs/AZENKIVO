@@ -49,6 +49,11 @@
         <item name="textAppearanceSmallPopupMenu">@style/Azenkivo.TextAppearance.Menu</item>
     </style>
 
+    <!-- Overlay Toolbar di atas bg_header_wafe (ikon putih) -->
+    <style name="ThemeOverlay.Azenkivo.Toolbar.Dark" parent="ThemeOverlay.Azenkivo.Toolbar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
     <style name="Azenkivo.PopupOverflow" parent="Widget.Material3.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/bg_popup_menu</item>
         <item name="android:popupElevation">6dp</item>

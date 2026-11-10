@@ -107,9 +107,14 @@ class MainActivity : AppCompatActivity() {
 
     // Area status bar mengikuti bagian atas tab aktif
     private fun terapkanWarnaHeader(menuId: Int) {
-        val warna = if (menuId == R.id.tracking) R.color.map_bg else R.color.canvas
+        val warna = when (menuId) {
+            R.id.beranda -> R.color.brand
+            R.id.tracking -> R.color.map_bg
+            else -> R.color.canvas
+        }
         binding.main.setBackgroundColor(ContextCompat.getColor(this, warna))
-        WindowCompat.getInsetsController(window, binding.main).isAppearanceLightStatusBars = true
+        WindowCompat.getInsetsController(window, binding.main).isAppearanceLightStatusBars =
+            (menuId != R.id.beranda)
     }
 
     // Dipanggil dari Fragment untuk pindah tab
@@ -238,8 +243,10 @@ class MainActivity : AppCompatActivity() {
             .setCancelable(false)
             .setPositiveButton(getString(R.string.dialog_logout_yes)) { dialog, _ ->
                 val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                val tutorialSeen = sharedPref.getBoolean("tutorial_seen", false)
                 val editor = sharedPref.edit()
                 editor.clear()
+                editor.putBoolean("tutorial_seen", tutorialSeen) // tutorial tidak muncul lagi
                 editor.apply()
                 dialog.dismiss()
 

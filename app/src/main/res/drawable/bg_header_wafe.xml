@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Drawable gelombang header (bg_header_wafe) untuk AZENKIVO -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="412dp"
+    android:height="240dp"
+    android:viewportWidth="412"
+    android:viewportHeight="240">
+
+    <!-- Latar utama: Deep Slate Navy (@color/brand) dengan bagian bawah bergelombang -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M0,0 H412 V188 C340,232 268,236 196,204 C124,172 60,178 0,212 Z" />
+
+    <!-- Lapisan gelombang kedua: Slate Navy terang (@color/brand_pressed) -->
+    <path
+        android:fillAlpha="0.65"
+        android:fillColor="#1E293B"
+        android:pathData="M0,96 C92,138 176,126 264,92 C328,68 376,78 412,102 V196 C344,234 264,228 184,196 C108,166 48,176 0,208 Z" />
+
+    <!-- Aksen gelombang biru keselamatan (@color/accent) di tepi bawah -->
+    <path
+        android:fillAlpha="0.35"
+        android:fillColor="#2563EB"
+        android:pathData="M0,164 C84,132 164,148 246,184 C316,214 368,212 412,182 V204 C352,238 272,236 192,202 C116,170 52,180 0,214 Z" />
+
+</vector>

@@ -185,5 +185,37 @@
     <string name="dp_f5_title">Data medis</string>
     <string name="dp_f5_body">Golongan darah, kontak keluarga, dan catatan medis di Profil.</string>
     <string name="dp_tech_title">Teknologi</string>
-    <string name="dp_tech_body">Kotlin · ViewBinding · Intent · SharedPreferences · AlertDialog · CardView · Fragment · Bottom Navigation · ListView · Glide · WebView</string>
+    <string name="dp_tech_body">Kotlin · ViewBinding · Intent · SharedPreferences · AlertDialog · CardView · Fragment · Bottom Navigation · ListView · Glide · WebView · ChipGroup · GridLayout</string>
+
+    <!-- ChipGroup Filter Panduan -->
+    <string name="pand_chip_all">Semua</string>
+    <string name="pand_chip_p3k">Pertolongan Pertama (P3K)</string>
+    <string name="pand_chip_bencana">Mitigasi Bencana</string>
+
+    <!-- Tutorial Screen (3 Fragment) -->
+    <string name="tut_skip">Lewati</string>
+    <string name="tut_prev">Kembali</string>
+    <string name="tut_next">Selanjutnya</string>
+    <string name="tut_start">Mulai Sekarang</string>
+
+    <string name="tut1_step">LANGKAH 1 DARI 3 · TANGGAP DARURAT</string>
+    <string name="tut1_title">Sinyal SOS &amp; Hotline Satu Sentuhan</string>
+    <string name="tut1_desc">Kirim sinyal darurat SOS hanya dengan menahan tombol selama 2 detik. Hubungi langsung layanan 112, Ambulans (119), Damkar (113), dan Basarnas (115).</string>
+    <string name="tut1_point1">Tahan 2 detik untuk mencegah tombol tertekan tidak sengaja</string>
+    <string name="tut1_point2">Koordinat lokasi GPS otomatis dikirim ke petugas terdekat</string>
+    <string name="tut1_point3">Akses cepat 4 nomor hotline darurat nasional 24 jam</string>
+
+    <string name="tut2_step">LANGKAH 2 DARI 3 · PEMANTAUAN REAL-TIME</string>
+    <string name="tut2_title">Live Tracking Unit Responder</string>
+    <string name="tut2_desc">Pantau pergerakan tim medis, pemadam kebakaran, dan relawan terdekat yang menuju lokasi Anda lengkap dengan jarak serta estimasi waktu tiba (ETA).</string>
+    <string name="tut2_point1">Estimasi waktu tiba (ETA) dan jarak unit terdekat secara langsung</string>
+    <string name="tut2_point2">Informasi instansi, nama petugas, dan status prioritas sirene</string>
+    <string name="tut2_point3">Hubungi langsung petugas lapangan atau batalkan sinyal bila sudah aman</string>
+
+    <string name="tut3_step">LANGKAH 3 DARI 3 · PERTOLONGAN PERTAMA</string>
+    <string name="tut3_title">Panduan SOP P3K &amp; Siaga Bencana</string>
+    <string name="tut3_desc">Pelajari langkah penanganan darurat medis dan mitigasi bencana alam sesuai standar keselamatan sembari menunggu petugas tiba di lokasi.</string>
+    <string name="tut3_point1">8 panduan SOP P3K (CPR, pendarahan, luka bakar) &amp; bencana</string>
+    <string name="tut3_point2">Peringatan dini gempa bumi &amp; cuaca ekstrem terintegrasi Info BMKG</string>
+    <string name="tut3_point3">Simpan identitas medis, golongan darah, dan kontak darurat keluarga</string>
 </resources>

@@ -31,6 +31,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Halaman Tutorial (setelah SplashActivity, terdiri dari 3 Fragment) -->
+        <activity
+            android:name=".TutorialActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- Halaman Login -->
         <activity
             android:name=".LoginActivity"

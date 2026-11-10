@@ -80,46 +80,39 @@
                 android:textColor="@color/ink_secondary"
                 android:textSize="16sp" />
 
-            <!-- Chip platform -->
-            <LinearLayout
+            <!-- Chip platform menggunakan ChipGroup -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-                <TextView
+                android:layout_marginTop="12dp"
+                app:chipSpacingHorizontal="8dp">
+
+                <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_chip_neutral"
+                    android:checkable="false"
+                    android:clickable="false"
                     android:fontFamily="@font/jakarta_semibold"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    android:text="@string/dp_chip_platform"
-                    android:textColor="@color/ink"
-                    android:textSize="13sp" />
-                <TextView
+                    android:text="@string/dp_chip_platform" />
+
+                <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_chip_neutral"
+                    android:checkable="false"
+                    android:clickable="false"
                     android:fontFamily="@font/jakarta_semibold"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    android:text="@string/dp_chip_lang"
-                    android:textColor="@color/ink"
-                    android:textSize="13sp" />
-                <TextView
+                    android:text="@string/dp_chip_lang" />
+
+                <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_chip_neutral"
+                    android:checkable="false"
+                    android:clickable="false"
                     android:fontFamily="@font/jakarta_semibold"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    android:text="@string/dp_chip_ui"
-                    android:textColor="@color/ink"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    android:text="@string/dp_chip_ui" />
+
+            </com.google.android.material.chip.ChipGroup>
 
             <!-- Deskripsi proyek -->
             <TextView

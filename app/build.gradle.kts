@@ -45,6 +45,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // Glide: memuat gambar dari URL ke ImageView (Modul P7 langkah 4.1)
     implementation(libs.glide)
+    // Modul P9: GridLayout, ViewPager2 (Tutorial Screen), DotsIndicator
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)

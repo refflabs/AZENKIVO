@@ -3,14 +3,22 @@ package com.example.azenkivo.Panduan
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import com.example.azenkivo.SopDetailActivity
 import com.example.azenkivo.R
+import com.example.azenkivo.TutorialActivity
 import com.example.azenkivo.databinding.FragmentPanduanBinding
+import com.google.android.material.chip.Chip
 
 class PanduanFragment : Fragment() {
 
@@ -173,6 +181,9 @@ class PanduanFragment : Fragment() {
         )
     )
 
+    // Daftar aktif sesuai filter ChipGroup
+    private var daftarAktif: List<Map<String, Any>> = dataListWithDesc
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -187,21 +198,47 @@ class PanduanFragment : Fragment() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.pand_title)
         (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = getString(R.string.pand_subtitle)
-        binding.tvJumlahSop.text = getString(R.string.pand_count, dataListWithDesc.size)
 
-        // SimpleAdapter: judul, deskripsi, kategori
-        val adapter = SimpleAdapter(
-            requireContext(),
-            dataListWithDesc,
-            R.layout.item_sop,
-            arrayOf("title", "desc", "kategori"), // key yang diambil dari data
-            intArrayOf(android.R.id.text1, android.R.id.text2, R.id.tvKategoriSop) // tempat tampilnya
-        )
-        binding.listViewSop.adapter = adapter
+        // Option menu di Toolbar: ikon Info membuka Tutorial (Modul P9 5.4)
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.panduan_toolbar_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_tutorial -> {
+                        val intent = Intent(requireContext(), TutorialActivity::class.java)
+                        intent.putExtra(TutorialActivity.EXTRA_DARI_MENU, true)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        // Tampilkan semua panduan saat pertama dibuka
+        tampilkanDaftarSop(null)
+
+        // Filter daftar SOP berdasarkan ChipGroup kategori (Modul P9 2.2)
+        binding.chipGroupKategori.setOnCheckedStateChangeListener { group, checkedIds ->
+            val selectedChipId = checkedIds.firstOrNull() // ambil id chip yang dipilih
+            if (selectedChipId != null) {
+                val chip = group.findViewById<Chip>(selectedChipId)
+                Toast.makeText(requireContext(), "Filter: ${chip.text}", Toast.LENGTH_SHORT).show()
+            }
+            val kategori = when (selectedChipId) {
+                R.id.chipP3k -> "Pertolongan Pertama (P3K)"
+                R.id.chipBencana -> "Mitigasi Bencana"
+                else -> null
+            }
+            tampilkanDaftarSop(kategori)
+        }
 
         // Klik item -> buka SopDetailActivity dengan putExtra
         binding.listViewSop.setOnItemClickListener { _, _, position, _ ->
-            val selectedItem = dataListWithDesc[position]
+            val selectedItem = daftarAktif[position]
 
             val intent = Intent(requireContext(), SopDetailActivity::class.java)
             intent.putExtra("EXTRA_JUDUL", selectedItem["title"] as String)
@@ -213,6 +250,26 @@ class PanduanFragment : Fragment() {
             intent.putExtra("EXTRA_LANGKAH_ISI", selectedItem["langkahIsi"] as Array<String>)
             startActivity(intent)
         }
+    }
+
+    // Perbarui SimpleAdapter & jumlah panduan sesuai kategori terpilih
+    private fun tampilkanDaftarSop(kategoriFilter: String?) {
+        daftarAktif = if (kategoriFilter == null) {
+            dataListWithDesc
+        } else {
+            dataListWithDesc.filter { it["kategori"] == kategoriFilter }
+        }
+        binding.tvJumlahSop.text = getString(R.string.pand_count, daftarAktif.size)
+
+        // SimpleAdapter: judul, deskripsi, kategori
+        val adapter = SimpleAdapter(
+            requireContext(),
+            daftarAktif,
+            R.layout.item_sop,
+            arrayOf("title", "desc", "kategori"), // key yang diambil dari data
+            intArrayOf(android.R.id.text1, android.R.id.text2, R.id.tvKategoriSop) // tempat tampilnya
+        )
+        binding.listViewSop.adapter = adapter
     }
 
     override fun onDestroyView() {
